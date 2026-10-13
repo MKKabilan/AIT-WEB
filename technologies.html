@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Technologies - AssureInfo Technologies Private Limited</title>
+    <meta name="description" content="Explore the laboratory information management systems, scientific data management platforms, chromatography software, and statistical tools we support.">
+    <!-- Favicon -->
+    <link rel="icon" href="logo.png" type="image/png">
+
+    <style>
+        /* =========================
+           RESET
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #071a3d; /* Dark Blue Background */
+            color: #f3f6ff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* =========================
+           NAVBAR (White Brand Theme)
+        ========================= */
+        .navbar {
+            width: 100%;
+            min-height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px clamp(20px, 8vw, 160px);
+            background: #ffffff;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 105px;
+            height: auto;
+            max-height: 65px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: clamp(15px, 2vw, 34px);
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #12316b;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #d99a00; /* Gold hover/active */
+        }
+
+        .contact-btn {
+            background: #12316b;
+            color: #ffffff !important;
+            padding: 12px 22px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #d99a00;
+            color: #10234f !important;
+        }
+
+        .hamburger {
+            display: none;
+            width: 42px;
+            height: 42px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: #12316b;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+        /* =========================
+           PAGE HEADING & TECH SECTION
+           (Reusing mission-vision-section styling)
+        ========================= */
+        .mission-vision-section {
+            width: 100%;
+            padding: clamp(65px, 9vw, 120px) 5%;
+            background: #071a3d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mv-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .mv-heading {
+            max-width: 800px;
+            margin-bottom: 55px;
+        }
+
+        .mv-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #f0b52d;
+            margin-bottom: 18px;
+        }
+
+        .mv-heading h2 {
+            font-size: clamp(30px, 4vw, 55px);
+            line-height: 1.2;
+            font-weight: 700;
+            color: #f3f6ff;
+            margin-bottom: 22px;
+        }
+
+        .mv-heading p {
+            font-size: clamp(14px, 1.3vw, 17px);
+            line-height: 1.8;
+            color: #d7e2f7;
+            max-width: 800px;
+        }
+
+        /* =========================
+           TECH GRID & CARDS
+        ========================= */
+        .mv-cards {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 30px;
+        }
+
+        /* New 3-column layout specifically for the technologies page */
+        .tech-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .mv-card {
+            position: relative;
+            background: linear-gradient(145deg, #102d61, #0a214b);
+            padding: clamp(30px, 4vw, 45px);
+            border: 1px solid rgba(240, 181, 45, 0.55);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mv-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+        }
+
+        .mv-icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #071a3d;
+            border: 1px solid rgba(240, 181, 45, 0.45);
+            border-radius: 10px;
+            color: #f0b52d;
+            margin-bottom: 30px;
+        }
+
+        .mv-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .mv-card-label {
+            display: block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            color: #f0b52d;
+            margin-bottom: 18px;
+        }
+
+        .mv-card h3 {
+            font-size: clamp(20px, 2vw, 28px);
+            font-weight: 700;
+            color: #f3f6ff;
+            margin-bottom: 15px;
+        }
+
+        .mv-card p {
+            font-size: clamp(14px, 1.2vw, 16px);
+            line-height: 1.8;
+            color: #d7e2f7;
+        }
+
+        .mv-line {
+            width: 45px;
+            height: 3px;
+            background: #d99a12;
+            margin-top: 25px;
+            border-radius: 5px;
+        }
+
+
+        /* =========================
+           FOOTER (White Brand Theme)
+        ========================= */
+        .footer {
+            width: 100%;
+            background: #ffffff;
+            color: #12316b;
+            padding: 75px 5% 0;
+        }
+
+        .footer-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.4fr 1.3fr;
+            gap: 50px;
+            padding-bottom: 60px;
+        }
+
+        .footer-brand {
+            max-width: 360px;
+        }
+
+        .footer-logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 25px;
+            background: transparent;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .footer-brand p {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #465675;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #12316b;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            font-size: 14px;
+            color: #465675;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #c58b00;
+        }
+
+        .footer-contact p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #465675;
+            margin-bottom: 18px;
+        }
+
+        .footer-contact strong {
+            color: #12316b;
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            padding: 25px 0;
+            border-top: 1px solid #dce2ec;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            color: #465675;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-bottom-links a {
+            font-size: 13px;
+            color: #465675;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #c58b00;
+        }
+
+
+        /* =========================
+           CONSOLIDATED MEDIA QUERIES
+        ========================= */
+
+        /* Large Desktop */
+        @media (min-width: 1600px) {
+            .navbar {
+                padding-left: 16%;
+                padding-right: 16%;
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 1100px) {
+            .navbar { padding: 12px 4%; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 12px; }
+        }
+
+        @media (max-width: 1024px) {
+            .mission-vision-section { padding: 75px 4%; }
+            .mv-heading { margin-bottom: 40px; }
+            
+            /* Tech grid shifts to 2 columns on tablet */
+            .tech-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            
+            .mv-card { padding: 32px; }
+
+            .footer { padding: 60px 4% 0; }
+            .footer-container { grid-template-columns: repeat(2, 1fr); gap: 45px; }
+            .footer-brand { max-width: 100%; }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .navbar { min-height: 75px; padding: 10px 20px; }
+            .logo img { width: 100px; max-height: 60px; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 20px 25px 25px;
+                background: #ffffff;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                border-bottom: 1px solid #e5e7eb;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { width: 100%; }
+            .nav-links a { display: block; width: 100%; padding: 15px 0; font-size: 14px; letter-spacing: 0.8px; }
+            
+            .nav-links a.contact-btn {
+                display: inline-block;
+                width: fit-content;
+                margin: 15px 0 5px;
+                padding: 13px 25px;
+            }
+
+            .mission-vision-section { padding: 60px 20px; }
+            .mv-heading { text-align: center; margin: 0 auto 40px; }
+            .mv-heading p { margin: auto; }
+            
+            /* Tech grid shifts to 1 column on mobile */
+            .mv-cards, .tech-grid { grid-template-columns: 1fr; gap: 20px; }
+            
+            .mv-card { padding: 30px; }
+            .mv-icon { width: 52px; height: 52px; margin-bottom: 24px; }
+
+            .footer { padding: 50px 20px 0; }
+            .footer-container { grid-template-columns: 1fr; gap: 35px; padding-bottom: 40px; }
+            .footer-brand { max-width: 100%; }
+            .footer-logo { width: 140px; }
+            .footer-column h3 { margin-bottom: 18px; }
+            .footer-column ul li { margin-bottom: 12px; }
+            .footer-bottom { flex-direction: column; text-align: center; gap: 15px; }
+            .footer-bottom-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            .navbar { min-height: 70px; padding: 8px 15px; }
+            .logo img { width: 90px; max-height: 55px; }
+            .nav-links { padding: 15px 20px 20px; }
+
+            .mission-vision-section { padding: 50px 16px; }
+            .mv-heading h2 { font-size: 28px; }
+            .mv-heading p { font-size: 14px; }
+            .mv-card { padding: 25px; }
+            .mv-card h3 { font-size: 25px; }
+            .mv-card p { font-size: 14px; line-height: 1.8; }
+
+            .footer { padding: 45px 18px 0; }
+            .footer-brand p { font-size: 14px; }
+            .footer-column ul li a { font-size: 14px; }
+            .footer-bottom p { font-size: 12px; line-height: 1.7; }
+            .footer-bottom-links a { font-size: 12px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="AssureInfo Technologies Logo">
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="technologies.html" class="active">TECHNOLOGIES</a></li>
+            <li><a href="industries.html">INDUSTRIES</a></li>
+            <li><a href="company.html">COMPANY</a></li>
+            <li><a href="contact.html" class="contact-btn">CONTACT US</a></li>
+        </ul>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- PAGE HEADING & TECHNOLOGIES SECTION -->
+    <section class="mission-vision-section">
+        <div class="mv-container">
+            
+            <!-- Heading -->
+            <div class="mv-heading">
+                <span class="mv-label">OUR EXPERTISE</span>
+                <h2>Our Technologies</h2>
+                <p>Explore the laboratory information management systems, scientific data management platforms, chromatography software, and statistical tools we support.</p>
+            </div>
+
+            <!-- Technologies Grid -->
+            <div class="mv-cards tech-grid">
+                
+                <!-- 1. LIMS -->
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                        </svg>
+                    </div>
+                    <span class="mv-card-label">PLATFORM 01</span>
+                    <h3>LIMS</h3>
+                    <p>Laboratory Information Management System</p>
+                    <div class="mv-line"></div>
+                </div>
+
+                <!-- 2. ELN -->
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <span class="mv-card-label">PLATFORM 02</span>
+                    <h3>ELN</h3>
+                    <p>Electronic Laboratory Notebook</p>
+                    <div class="mv-line"></div>
+                </div>
+
+                <!-- 3. Empower -->
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </div>
+                    <span class="mv-card-label">SOFTWARE 03</span>
+                    <h3>Empower</h3>
+                    <p>Chromatography Data System</p>
+                    <div class="mv-line"></div>
+                </div>
+
+                <!-- 4. NuGenesis (SDMS) -->
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <span class="mv-card-label">PLATFORM 04</span>
+                    <h3>NuGenesis (SDMS)</h3>
+                    <p>Scientific Data Management System</p>
+                    <div class="mv-line"></div>
+                </div>
+
+                <!-- 5. Chromeleon -->
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </div>
+                    <span class="mv-card-label">SOFTWARE 05</span>
+                    <h3>Chromeleon</h3>
+                    <p>Chromatography Data System</p>
+                    <div class="mv-line"></div>
+                </div>
+
+                <!-- 6. MODA -->
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <span class="mv-card-label">SOFTWARE 06</span>
+                    <h3>MODA</h3>
+                    <p>Laboratory Quality Management Software</p>
+                    <div class="mv-line"></div>
+                </div>
+
+                <!-- 7. Minitab -->
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="3" y1="3" x2="3" y2="21"></line>
+                            <line x1="3" y1="21" x2="21" y2="21"></line>
+                            <rect x="7" y="13" width="3" height="5"></rect>
+                            <rect x="12" y="9" width="3" height="9"></rect>
+                            <rect x="17" y="5" width="3" height="13"></rect>
+                        </svg>
+                    </div>
+                    <span class="mv-card-label">SOFTWARE 07</span>
+                    <h3>Minitab</h3>
+                    <p>Statistical Data Analysis Software</p>
+                    <div class="mv-line"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="logo.png" alt="AssureInfo Technologies Logo" class="footer-logo">
+                <p>AssureInfo Technologies Pvt. Ltd. is a trusted technology consulting and services company focused on laboratory informatics, digital transformation, and enterprise support solutions.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="technologies.html">Technologies</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="#">Laboratory Informatics</a></li>
+                    <li><a href="#">Digital Transformation</a></li>
+                    <li><a href="#">Enterprise Solutions</a></li>
+                    <li><a href="#">System Integration</a></li>
+                    <li><a href="#">Validation & Compliance</a></li>
+                    <li><a href="#">Managed Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-contact">
+                <h3>Contact Us</h3>
+                <p><strong>Email</strong><br>info@assureinfo.com</p>
+                <p><strong>Phone</strong><br>+91 XXXXX XXXXX</p>
+                <p><strong>Location</strong><br>Tamil Nadu, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 AssureInfo Technologies Pvt. Ltd. All Rights Reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+
+        // Toggle menu
+        hamburger.addEventListener("click", function (e) {
+            e.stopPropagation(); // Prevent immediate closing
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("active");
+            const isOpen = navLinks.classList.contains("active");
+            hamburger.setAttribute("aria-expanded", isOpen);
+        });
+
+        // Close menu after clicking link
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+                hamburger.classList.remove("active");
+                hamburger.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", function (event) {
+            if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove("active");
+                hamburger.classList.remove("active");
+                hamburger.setAttribute("aria-expanded", "false");
+            }
+        });
+    </script>
+
+</body>
+</html>

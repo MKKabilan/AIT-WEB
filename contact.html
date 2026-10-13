@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us & Careers - AssureInfo Technologies Private Limited</title>
+    <meta name="description" content="Contact AssureInfo Technologies for inquiries or explore career opportunities. Apply online with your resume.">
+    <!-- Favicon -->
+    <link rel="icon" href="logo.png" type="image/png">
+
+    <style>
+        /* =========================
+           RESET
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #071a3d; /* Dark Blue Background */
+            color: #f3f6ff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* =========================
+           NAVBAR (White Brand Theme)
+        ========================= */
+        .navbar {
+            width: 100%;
+            min-height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px clamp(20px, 8vw, 160px);
+            background: #ffffff;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 105px;
+            height: auto;
+            max-height: 65px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: clamp(15px, 2vw, 34px);
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #12316b;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #d99a00; /* Gold hover/active */
+        }
+
+        .contact-btn {
+            background: #12316b;
+            color: #ffffff !important;
+            padding: 12px 22px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #d99a00;
+            color: #10234f !important;
+        }
+
+        .hamburger {
+            display: none;
+            width: 42px;
+            height: 42px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: #12316b;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+        /* =========================
+           SECTIONS STYLING
+        ========================= */
+        .mission-vision-section {
+            width: 100%;
+            padding: clamp(65px, 9vw, 120px) 5%;
+            background: #071a3d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alt-bg {
+            background: #0a214b;
+        }
+
+        .mv-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .mv-heading {
+            max-width: 800px;
+            margin-bottom: 55px;
+        }
+
+        .mv-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #f0b52d;
+            margin-bottom: 18px;
+        }
+
+        .mv-heading h2 {
+            font-size: clamp(30px, 4vw, 55px);
+            line-height: 1.2;
+            font-weight: 700;
+            color: #f3f6ff;
+            margin-bottom: 22px;
+        }
+
+        .mv-heading p {
+            font-size: clamp(16px, 1.4vw, 20px);
+            line-height: 1.5;
+            color: #d7e2f7;
+            max-width: 800px;
+        }
+
+        /* =========================
+           CONTACT & CAREERS CONTENT
+        ========================= */
+        .content-block {
+            font-size: clamp(15px, 1.3vw, 17px);
+            line-height: 1.9;
+            color: #d7e2f7;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .email-display {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(145deg, #102d61, #0a214b);
+            padding: 20px 30px;
+            border: 1px solid rgba(240, 181, 45, 0.55);
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #f0b52d;
+            transition: transform 0.3s ease;
+        }
+
+        .email-display:hover {
+            transform: translateY(-3px);
+            color: #f0b52d;
+        }
+
+        .email-display svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* =========================
+           APPLICATION FORM CARD
+        ========================= */
+        .form-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #102d61, #0a214b);
+            padding: clamp(30px, 4vw, 50px);
+            border: 1px solid rgba(240, 181, 45, 0.55);
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #f3f6ff;
+            margin-bottom: 8px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"] {
+            width: 100%;
+            padding: 14px 16px;
+            background: #071a3d;
+            border: 1px solid rgba(240, 181, 45, 0.3);
+            border-radius: 6px;
+            color: #f3f6ff;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #f0b52d;
+            box-shadow: 0 0 0 3px rgba(240, 181, 45, 0.2);
+        }
+
+        .form-group input::placeholder {
+            color: #5a6a8a;
+        }
+
+        /* File Upload Styling */
+        .file-upload-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .file-upload-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            background: #071a3d;
+            border: 1px dashed rgba(240, 181, 45, 0.5);
+            border-radius: 6px;
+            color: #8a9abf;
+            font-size: 14px;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .file-upload-label svg {
+            width: 22px;
+            height: 22px;
+            color: #f0b52d;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        .file-upload-label.has-file {
+            border-style: solid;
+            color: #f3f6ff;
+        }
+
+        /* Validation Messages */
+        .error-text {
+            color: #ff7a7a;
+            font-size: 12px;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .form-group.has-error .error-text {
+            display: block;
+        }
+
+        .form-group.has-error input,
+        .form-group.has-error .file-upload-label {
+            border-color: #ff7a7a;
+        }
+
+        /* Form Button */
+        .form-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 16px 28px;
+            background: #d99a12;
+            color: #071a3d;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .form-btn:hover {
+            background: #f0b52d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(217, 154, 18, 0.3);
+        }
+
+        .form-btn:disabled {
+            background: #4a4a4a;
+            color: #888;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Form Submission Messages */
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(30, 150, 82, 0.15);
+            border: 1px solid #1e9652;
+            color: #aaf0c5;
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(255, 107, 107, 0.15);
+            border: 1px solid #ff6b6b;
+            color: #ffcccc;
+            display: block;
+        }
+
+
+        /* =========================
+           FOOTER (White Brand Theme)
+        ========================= */
+        .footer {
+            width: 100%;
+            background: #ffffff;
+            color: #12316b;
+            padding: 75px 5% 0;
+        }
+
+        .footer-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.4fr 1.3fr;
+            gap: 50px;
+            padding-bottom: 60px;
+        }
+
+        .footer-brand { max-width: 360px; }
+        .footer-logo { width: 150px; height: auto; margin-bottom: 25px; background: transparent; padding: 8px; border-radius: 4px; }
+        .footer-brand p { font-size: 15px; line-height: 1.9; color: #465675; }
+        .footer-column h3 { font-size: 18px; font-weight: 700; margin-bottom: 25px; color: #12316b; }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 15px; }
+        .footer-column ul li a { font-size: 14px; color: #465675; transition: color 0.3s ease; }
+        .footer-column ul li a:hover { color: #c58b00; }
+        .footer-contact p { font-size: 14px; line-height: 1.8; color: #465675; margin-bottom: 18px; }
+        .footer-contact strong { color: #12316b; font-weight: 600; }
+        .footer-bottom { width: 100%; max-width: 1400px; margin: auto; padding: 25px 0; border-top: 1px solid #dce2ec; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+        .footer-bottom p { font-size: 13px; color: #465675; }
+        .footer-bottom-links { display: flex; gap: 25px; }
+        .footer-bottom-links a { font-size: 13px; color: #465675; }
+        .footer-bottom-links a:hover { color: #c58b00; }
+
+
+        /* =========================
+           CONSOLIDATED MEDIA QUERIES
+        ========================= */
+        @media (min-width: 1600px) {
+            .navbar { padding-left: 16%; padding-right: 16%; }
+        }
+
+        @media (max-width: 1100px) {
+            .navbar { padding: 12px 4%; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 12px; }
+        }
+
+        @media (max-width: 1024px) {
+            .mission-vision-section { padding: 75px 4%; }
+            .mv-heading { margin-bottom: 40px; }
+            
+            .footer { padding: 60px 4% 0; }
+            .footer-container { grid-template-columns: repeat(2, 1fr); gap: 45px; }
+            .footer-brand { max-width: 100%; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { min-height: 75px; padding: 10px 20px; }
+            .logo img { width: 100px; max-height: 60px; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 20px 25px 25px;
+                background: #ffffff;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                border-bottom: 1px solid #e5e7eb;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { width: 100%; }
+            .nav-links a { display: block; width: 100%; padding: 15px 0; font-size: 14px; letter-spacing: 0.8px; }
+            
+            .nav-links a.contact-btn {
+                display: inline-block;
+                width: fit-content;
+                margin: 15px 0 5px;
+                padding: 13px 25px;
+            }
+
+            .mission-vision-section { padding: 60px 20px; }
+            .mv-heading { text-align: center; margin: 0 auto 40px; }
+            .mv-heading p { margin: auto; }
+            
+            .email-display { flex-direction: column; text-align: center; padding: 25px; }
+            .form-card { padding: 25px; }
+
+            .footer { padding: 50px 20px 0; }
+            .footer-container { grid-template-columns: 1fr; gap: 35px; padding-bottom: 40px; }
+            .footer-brand { max-width: 100%; }
+            .footer-logo { width: 140px; }
+            .footer-column h3 { margin-bottom: 18px; }
+            .footer-column ul li { margin-bottom: 12px; }
+            .footer-bottom { flex-direction: column; text-align: center; gap: 15px; }
+            .footer-bottom-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
+        }
+
+        @media (max-width: 480px) {
+            .navbar { min-height: 70px; padding: 8px 15px; }
+            .logo img { width: 90px; max-height: 55px; }
+            .nav-links { padding: 15px 20px 20px; }
+
+            .mission-vision-section { padding: 50px 16px; }
+            .mv-heading h2 { font-size: 28px; }
+            
+            .form-card { padding: 20px 15px; }
+            .form-btn { padding: 14px 20px; font-size: 14px; }
+
+            .footer { padding: 45px 18px 0; }
+            .footer-brand p { font-size: 14px; }
+            .footer-column ul li a { font-size: 14px; }
+            .footer-bottom p { font-size: 12px; line-height: 1.7; }
+            .footer-bottom-links a { font-size: 12px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="AssureInfo Technologies Logo">
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="technologies.html">TECHNOLOGIES</a></li>
+            <li><a href="industries.html">INDUSTRIES</a></li>
+            <li><a href="company.html">COMPANY</a></li>
+            <li><a href="contact.html" class="active contact-btn">CONTACT US</a></li>
+        </ul>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- CONTACT US SECTION -->
+    <section class="mission-vision-section">
+        <div class="mv-container">
+            <div class="mv-heading">
+                <span class="mv-label">GET IN TOUCH</span>
+                <h2>Contact Us</h2>
+            </div>
+            <p class="content-block">
+                For any inquiries, support, or questions, please reach out to our official contact email address below:
+            </p>
+            <a href="mailto:support@assureinfo.in" class="email-display">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                support@assureinfo.in
+            </a>
+        </div>
+    </section>
+
+    <!-- CAREERS SECTION -->
+    <section class="mission-vision-section alt-bg">
+        <div class="mv-container">
+            <div class="mv-heading">
+                <span class="mv-label">JOIN OUR TEAM</span>
+                <h2>Careers</h2>
+                <p>Build Your Future with AssureInfo Technologies</p>
+            </div>
+            <p class="content-block">At AssureInfo Technologies, our people are our greatest strength. We provide a positive workplace that encourages learning, teamwork, innovation, and career growth.</p>
+            <p class="content-block">We value honesty, responsibility, collaboration, and quality. We encourage our employees to share ideas, take ownership of their work, and contribute to the success of our clients and organization.</p>
+            <p class="content-block">Our success is driven by talented professionals. If you are looking for a career that offers challenging projects, global exposure, and professional growth, AssureInfo Technologies is the place for you.</p>
+        </div>
+    </section>
+
+    <!-- APPLICATION FORM SECTION -->
+    <section class="mission-vision-section">
+        <div class="mv-container">
+            <div class="mv-heading" style="text-align: center; max-width: 600px; margin: 0 auto 40px;">
+                <span class="mv-label">SUBMIT YOUR APPLICATION</span>
+                <h2>Apply Now</h2>
+                <p style="font-size: 15px; margin-top: 15px;">Fill out the form below to submit your application and resume.</p>
+            </div>
+
+            <div class="form-card">
+                <form id="careerForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" novalidate>
+                    <!-- Web3Forms Access Key (Replace YOUR_ACCESS_KEY_HERE with your actual key) -->
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <!-- Custom configurations -->
+                    <input type="hidden" name="subject" value="New Career Application - AssureInfo Website">
+                    <input type="hidden" name="from_name" value="AssureInfo Careers Bot">
+                    <input type="checkbox" name="botcheck" id="botcheck" class="hidden" style="display: none;">
+
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                        <div class="error-text">Please enter your name.</div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number" pattern="[0-9+\s\-()]{7,15}">
+                        <div class="error-text">Please enter a valid phone number.</div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email ID</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                        <div class="error-text">Please enter a valid email address.</div>
+                    </div>
+
+                    <!-- Resume -->
+                    <div class="form-group">
+                        <label for="resume">Resume (Attachment)</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="resume" name="resume" class="file-upload-input" accept=".pdf,.doc,.docx" required>
+                            <label for="resume" class="file-upload-label" id="fileLabel">
+                                <span id="fileName">Choose your resume (PDF, DOC, DOCX - Max 1MB)</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                            </label>
+                        </div>
+                        <div class="error-text" id="fileError">Please upload a valid file (PDF/DOC/DOCX) under 1MB.</div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="form-btn" id="submitBtn">Apply Now</button>
+
+                    <!-- Submission Messages -->
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="logo.png" alt="AssureInfo Technologies Logo" class="footer-logo">
+                <p>AssureInfo Technologies Pvt. Ltd. is a trusted technology consulting and services company focused on laboratory informatics, digital transformation, and enterprise support solutions.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="technologies.html">Technologies</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="#">Laboratory Informatics</a></li>
+                    <li><a href="#">Digital Transformation</a></li>
+                    <li><a href="#">Enterprise Solutions</a></li>
+                    <li><a href="#">System Integration</a></li>
+                    <li><a href="#">Validation & Compliance</a></li>
+                    <li><a href="#">Managed Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-contact">
+                <h3>Contact Us</h3>
+                <p><strong>Email</strong><br>info@assureinfo.com</p>
+                <p><strong>Phone</strong><br>+91 XXXXX XXXXX</p>
+                <p><strong>Location</strong><br>Tamil Nadu, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 AssureInfo Technologies Pvt. Ltd. All Rights Reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+
+        // Navbar toggle
+        hamburger.addEventListener("click", function (e) {
+            e.stopPropagation();
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("active");
+            const isOpen = navLinks.classList.contains("active");
+            hamburger.setAttribute("aria-expanded", isOpen);
+        });
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+                hamburger.classList.remove("active");
+                hamburger.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        document.addEventListener("click", function (event) {
+            if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove("active");
+                hamburger.classList.remove("active");
+                hamburger.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        // =========================================
+        // FORM VALIDATION & WEB3FORMS SUBMISSION
+        // =========================================
+        const form = document.getElementById('careerForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formMessage = document.getElementById('formMessage');
+        const fileInput = document.getElementById('resume');
+        const fileLabel = document.getElementById('fileLabel');
+        const fileName = document.getElementById('fileName');
+        const fileError = document.getElementById('fileError');
+
+        // Update file label on selection
+        fileInput.addEventListener('change', function() {
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                fileName.textContent = file.name;
+                fileLabel.classList.add('has-file');
+                
+                // Validate file type
+                const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+                if (!allowedTypes.includes(file.type)) {
+                    fileError.textContent = 'Invalid file type. Please upload PDF, DOC, or DOCX.';
+                    fileInput.parentElement.parentElement.classList.add('has-error');
+                } else if (file.size > 1 * 1024 * 1024) { // 1MB limit (Web3Forms Free Plan Limit)
+                    fileError.textContent = 'File is too large. Maximum size is 1MB.';
+                    fileInput.parentElement.parentElement.classList.add('has-error');
+                } else {
+                    fileInput.parentElement.parentElement.classList.remove('has-error');
+                    fileError.textContent = 'Please upload a valid file (PDF/DOC/DOCX) under 1MB.';
+                }
+            } else {
+                fileName.textContent = 'Choose your resume (PDF, DOC, DOCX - Max 1MB)';
+                fileLabel.classList.remove('has-file');
+            }
+        });
+
+        // Helper validation functions
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validatePhone(phone) {
+            const re = /^[+]?[0-9\s\-()]{7,15}$/;
+            return re.test(phone);
+        }
+
+        // Form Submit Handler
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+
+            // Clear previous messages
+            formMessage.className = 'form-message';
+            formMessage.style.display = 'none';
+            formMessage.textContent = '';
+
+            // Validate Name
+            const nameInput = document.getElementById('name');
+            if (nameInput.value.trim() === '') {
+                nameInput.parentElement.classList.add('has-error');
+                isValid = false;
+            } else {
+                nameInput.parentElement.classList.remove('has-error');
+            }
+
+            // Validate Phone
+            const phoneInput = document.getElementById('phone');
+            if (!validatePhone(phoneInput.value.trim())) {
+                phoneInput.parentElement.classList.add('has-error');
+                isValid = false;
+            } else {
+                phoneInput.parentElement.classList.remove('has-error');
+            }
+
+            // Validate Email
+            const emailInput = document.getElementById('email');
+            if (!validateEmail(emailInput.value.trim())) {
+                emailInput.parentElement.classList.add('has-error');
+                isValid = false;
+            } else {
+                emailInput.parentElement.classList.remove('has-error');
+            }
+
+            // Validate File
+            if (fileInput.files.length === 0) {
+                fileInput.parentElement.parentElement.classList.add('has-error');
+                isValid = false;
+            } else {
+                // Double check validation logic in case it wasn't triggered by change event
+                const file = fileInput.files[0];
+                const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+                if (!allowedTypes.includes(file.type) || file.size > 1 * 1024 * 1024) {
+                    fileInput.parentElement.parentElement.classList.add('has-error');
+                    isValid = false;
+                } else {
+                    fileInput.parentElement.parentElement.classList.remove('has-error');
+                }
+            }
+
+            if (!isValid) return;
+
+            // Disable button to prevent duplicate submissions
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            // Prepare data for Web3Forms
+            const formData = new FormData(form);
+
+            // Send to Web3Forms API
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    formMessage.textContent = 'Application submitted successfully! We will get back to you soon.';
+                    formMessage.classList.add('success');
+                    form.reset();
+                    fileName.textContent = 'Choose your resume (PDF, DOC, DOCX - Max 1MB)';
+                    fileLabel.classList.remove('has-file');
+                } else {
+                    formMessage.textContent = 'Error: ' + (data.message || 'Submission failed. Please try again.');
+                    formMessage.classList.add('error');
+                }
+            })
+            .catch(error => {
+                formMessage.textContent = 'Network Error: Please check your connection and try again.';
+                formMessage.classList.add('error');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Apply Now';
+            });
+        });
+    </script>
+
+</body>
+</html>

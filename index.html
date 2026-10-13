@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AssureInfo Technologies Private Limited</title>
+    <meta name="description" content="AssureInfo Technologies provides innovative, compliant, and value-driven technology solutions for regulated industries.">
+    <!-- Favicon (Add your favicon file to the root directory) -->
+    <link rel="icon" href="logo.png" type="image/png">
+
+    <style>
+        /* =========================
+           RESET
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #071a3d; /* Dark Blue Background */
+            color: #f3f6ff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* =========================
+           NAVBAR (White Brand Theme)
+        ========================= */
+        .navbar {
+            width: 100%;
+            min-height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px clamp(20px, 8vw, 160px);
+            background: #ffffff;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 105px;
+            height: auto;
+            max-height: 65px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: clamp(15px, 2vw, 34px);
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 13px; /* Lightly increased */
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #12316b;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #d99a00; /* Gold hover/active */
+        }
+
+        .contact-btn {
+            background: #12316b;
+            color: #ffffff !important;
+            padding: 12px 22px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #d99a00;
+            color: #10234f !important;
+        }
+
+        .hamburger {
+            display: none;
+            width: 42px;
+            height: 42px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: #12316b;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: clamp(450px, 70vh, 750px);
+            display: flex;
+            align-items: center;
+            background-image: url("001.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(4, 18, 48, 0.88), rgba(7, 26, 61, 0.58));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            padding: 60px clamp(25px, 8vw, 160px);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(32px, 5vw, 72px);
+            line-height: 1.12;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+
+        .hero-content p {
+            max-width: 520px;
+            font-size: clamp(14px, 1.5vw, 19px);
+            line-height: 1.7;
+            margin-bottom: 35px;
+            color: #ffffff;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #d99a12; /* Gold */
+            color: #071a3d;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+            transition: 0.3s ease;
+        }
+
+        .hero-btn:hover {
+            background: #f0b52d;
+            color: #071a3d;
+        }
+
+
+        /* =========================
+           ABOUT SECTION
+        ========================= */
+        .about-section {
+            width: 100%;
+            padding: clamp(0px, 8vw, 110px) 4%;
+            background: #0a214b;
+        }
+
+        .about-container {
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 20% 80%;
+            align-items: center;
+            gap: 0;
+        }
+
+        .about-logo {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px;
+        }
+
+        .about-logo img {
+            width: 100%;
+            max-width: 200px; 
+            height: auto;
+            object-fit: contain;
+            display: block;
+            border-radius: 15px; /* Smooth Round Edges */
+            background: #ffffff;
+            padding: 10px;
+        }
+
+        .about-content {
+            width: 100%;
+            padding: 1px clamp(5px, 4vw, 70px);
+        }
+
+        .about-content h2 {
+            font-size: clamp(25px, 3vw, 42px);
+            line-height: 1.2;
+            font-weight: 700;
+            color: #f3f6ff;
+            margin-bottom: 28px;
+        }
+
+        .about-content p {
+            font-size: clamp(14px, 1.1vw, 16px); 
+            line-height: 1.8; 
+            color: #d7e2f7;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+
+        /* =========================
+           MISSION & VISION SECTION
+        ========================= */
+        .mission-vision-section {
+            width: 100%;
+            padding: clamp(65px, 9vw, 120px) 5%;
+            background: #071a3d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mv-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .mv-heading {
+            max-width: 700px;
+            margin-bottom: 55px;
+        }
+
+        .mv-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #f0b52d;
+            margin-bottom: 18px;
+        }
+
+        .mv-heading h2 {
+            font-size: clamp(30px, 4vw, 55px);
+            line-height: 1.2;
+            font-weight: 700;
+            color: #f3f6ff;
+            margin-bottom: 22px;
+        }
+
+        .mv-heading p {
+            font-size: clamp(14px, 1.3vw, 17px);
+            line-height: 1.8;
+            color: #f3f6ff;
+            max-width: 500px;
+        }
+
+        .mv-cards {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 30px;
+        }
+
+        .mv-card {
+            position: relative;
+            background: linear-gradient(145deg, #102d61, #0a214b);
+            padding: clamp(30px, 4vw, 55px);
+            border: 1px solid rgba(240, 181, 45, 0.55);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .mv-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+        }
+
+        .mv-icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #071a3d;
+            border: 1px solid rgba(240, 181, 45, 0.45);
+            border-radius: 10px;
+            color: #f0b52d;
+            margin-bottom: 30px;
+        }
+
+        .mv-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .mv-card-label {
+            display: block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            color: #f0b52d;
+            margin-bottom: 18px;
+        }
+
+        .mv-card h3 {
+            font-size: clamp(24px, 2.3vw, 34px);
+            font-weight: 700;
+            color: #f3f6ff;
+            margin-bottom: 22px;
+        }
+
+        .mv-card p {
+            font-size: clamp(14px, 1.2vw, 16px);
+            line-height: 1.9;
+            color: #d7e2f7;
+        }
+
+        .mv-line {
+            width: 45px;
+            height: 3px;
+            background: #d99a12;
+            margin-top: 35px;
+            border-radius: 5px;
+        }
+
+
+        /* =========================
+           CTA SECTION
+        ========================= */
+        .cta-section {
+            width: 100%;
+            padding: clamp(60px, 8vw, 110px) 5%;
+            background: #071a3d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .cta-content {
+            max-width: 800px;
+        }
+
+        .cta-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #f0b52d;
+            margin-bottom: 20px;
+        }
+
+        .cta-content h2 {
+            font-size: clamp(30px, 4vw, 58px);
+            line-height: 1.2;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .cta-content h2 span {
+            color: #f0b52d;
+        }
+
+        .cta-content p {
+            font-size: clamp(14px, 1.2vw, 17px);
+            line-height: 1.8;
+            color: #dce7f8;
+            max-width: 620px;
+        }
+
+        .cta-action {
+            flex-shrink: 0;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 22px;
+            padding: 18px 28px;
+            background: #d99a12;
+            color: #071a3d;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn span {
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        .cta-btn:hover {
+            background: #f0b52d;
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           FOOTER (White Brand Theme)
+        ========================= */
+        .footer {
+            width: 100%;
+            background: #ffffff;
+            color: #12316b;
+            padding: 75px 5% 0;
+        }
+
+        .footer-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.4fr 1.3fr;
+            gap: 50px;
+            padding-bottom: 60px;
+        }
+
+        .footer-brand {
+            max-width: 360px;
+        }
+
+        .footer-logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 25px;
+            background: transparent;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .footer-brand p {
+            font-size: 15px; /* Lightly increased */
+            line-height: 1.9;
+            color: #465675;
+        }
+
+        .footer-column h3 {
+            font-size: 18px; /* Lightly increased */
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #12316b;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            font-size: 14px; /* Lightly increased */
+            color: #465675;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #c58b00;
+        }
+
+        .footer-contact p {
+            font-size: 14px; /* Lightly increased */
+            line-height: 1.8;
+            color: #465675;
+            margin-bottom: 18px;
+        }
+
+        .footer-contact strong {
+            color: #12316b;
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            padding: 25px 0;
+            border-top: 1px solid #dce2ec;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            font-size: 13px; /* Lightly increased */
+            color: #465675;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-bottom-links a {
+            font-size: 13px; /* Lightly increased */
+            color: #465675;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #c58b00;
+        }
+
+
+        /* =========================
+           CONSOLIDATED MEDIA QUERIES
+        ========================= */
+
+        /* Large Desktop */
+        @media (min-width: 1600px) {
+            .navbar {
+                padding-left: 16%;
+                padding-right: 16%;
+            }
+            .about-container {
+                max-width: 1500px;
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 1100px) {
+            .navbar { padding: 12px 4%; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 12px; } /* Responsively adjusted */
+        }
+
+        @media (max-width: 1024px) {
+            .mission-vision-section { padding: 75px 4%; }
+            .mv-heading { margin-bottom: 40px; }
+            .mv-cards { gap: 22px; }
+            .mv-card { padding: 32px; }
+
+            .about-section { padding: 70px 4%; }
+            .about-container { grid-template-columns: 25% 75%; }
+            .about-logo { padding: 10px; }
+            .about-logo img { max-width: 160px; }
+            .about-content { padding: 10px 30px; }
+            .about-content h2 { font-size: 30px; }
+            .about-content p { font-size: 15px; line-height: 1.8; }
+
+            .cta-container { gap: 30px; }
+            .cta-btn { padding: 16px 22px; }
+
+            .footer { padding: 60px 4% 0; }
+            .footer-container { grid-template-columns: repeat(2, 1fr); gap: 45px; }
+            .footer-brand { max-width: 100%; }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero { min-height: 550px; background-position: center; }
+            .hero-content { padding: 50px 25px; text-align: center; }
+            .hero-content h1 { font-size: clamp(30px, 7vw, 50px); }
+            .hero-content p { margin-left: auto; margin-right: auto; }
+
+            .navbar { min-height: 75px; padding: 10px 20px; }
+            .logo img { width: 100px; max-height: 60px; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 20px 25px 25px;
+                background: #ffffff;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                border-bottom: 1px solid #e5e7eb;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { width: 100%; }
+            .nav-links a { display: block; width: 100%; padding: 15px 0; font-size: 14px; letter-spacing: 0.8px; } /* Responsively adjusted */
+            
+            /* Fix for Contact Button on Mobile */
+            .nav-links a.contact-btn {
+                display: inline-block;
+                width: fit-content;
+                margin: 15px 0 5px;
+                padding: 13px 25px;
+            }
+
+            .mission-vision-section { padding: 60px 20px; }
+            .mv-heading { text-align: center; margin: 0 auto 40px; }
+            .mv-heading p { margin: auto; }
+            .mv-cards { grid-template-columns: 1fr; gap: 20px; }
+            .mv-card { padding: 30px; }
+            .mv-icon { width: 52px; height: 52px; margin-bottom: 24px; }
+
+            .about-section { padding: 55px 20px; }
+            .about-container { display: flex; flex-direction: column; gap: 30px; }
+            .about-logo { width: 100%; padding: 0; justify-content: center; }
+            .about-logo img { width: 45%; max-width: 180px; }
+            .about-content { width: 100%; padding: 0; }
+            .about-content h2 { font-size: clamp(25px, 6vw, 34px); text-align: center; margin-bottom: 25px; }
+            .about-content p { font-size: 15px; line-height: 1.8; text-align: left; margin-bottom: 20px; }
+
+            .cta-section { padding: 60px 20px; }
+            .cta-container { flex-direction: column; text-align: center; gap: 35px; }
+            .cta-content { max-width: 100%; }
+            .cta-content p { margin: auto; }
+            .cta-action { width: 100%; }
+            .cta-btn { width: 100%; max-width: 280px; }
+
+            .footer { padding: 50px 20px 0; }
+            .footer-container { grid-template-columns: 1fr; gap: 35px; padding-bottom: 40px; }
+            .footer-brand { max-width: 100%; }
+            .footer-logo { width: 140px; }
+            .footer-column h3 { margin-bottom: 18px; }
+            .footer-column ul li { margin-bottom: 12px; }
+            .footer-bottom { flex-direction: column; text-align: center; gap: 15px; }
+            .footer-bottom-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            .hero { min-height: 520px; }
+            .hero-content { padding: 40px 20px; }
+            .hero-content h1 { font-size: clamp(28px, 8vw, 38px); letter-spacing: -0.5px; }
+            .hero-content p { font-size: 14px; line-height: 1.6; }
+            .hero-btn { padding: 14px 22px; font-size: 11px; }
+
+            .navbar { min-height: 70px; padding: 8px 15px; }
+            .logo img { width: 90px; max-height: 55px; }
+            .nav-links { padding: 15px 20px 20px; }
+
+            .mission-vision-section { padding: 50px 16px; }
+            .mv-heading h2 { font-size: 28px; }
+            .mv-heading p { font-size: 14px; }
+            .mv-card { padding: 25px; }
+            .mv-card h3 { font-size: 25px; }
+            .mv-card p { font-size: 14px; line-height: 1.8; }
+
+            .about-section { padding: 45px 18px; }
+            .about-logo img { width: 55%; max-width: 160px; }
+            .about-content h2 { font-size: 25px; line-height: 1.3; }
+            .about-content p { font-size: 14px; line-height: 1.8; }
+
+            .cta-section { padding: 50px 18px; }
+            .cta-content h2 { font-size: 28px; }
+            .cta-content p { font-size: 14px; }
+
+            .footer { padding: 45px 18px 0; }
+            .footer-brand p { font-size: 14px; } /* Responsively adjusted */
+            .footer-column ul li a { font-size: 14px; } /* Responsively adjusted */
+            .footer-bottom p { font-size: 12px; line-height: 1.7; } /* Responsively adjusted */
+            .footer-bottom-links a { font-size: 12px; } /* Responsively adjusted */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="AssureInfo Technologies Logo">
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active">HOME</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="technologies.html">TECHNOLOGIES</a></li>
+            <li><a href="industries.html">INDUSTRIES</a></li>
+            <li><a href="company.html">COMPANY</a></li>
+            <li><a href="contact.html" class="contact-btn">CONTACT US</a></li>
+        </ul>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Welcome to AssureInfo Technologies Pvt. Ltd</h1>
+            <p>Providing innovative, compliant, and value-driven technology solutions for regulated industries.</p>
+            <a href="contact.html" class="hero-btn">CONTACT US</a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-logo">
+                <img src="logo.png" alt="AssureInfo Technologies Logo">
+            </div>
+            <div class="about-content">
+                <p>Welcome to AssureInfo Technologies Pvt. Ltd. A trusted technology consulting and services company focused on laboratory informatics, digital transformation, and enterprise support solutions for regulated industries.</p>
+                <p>We partner with organizations in the Pharmaceutical, Biotechnology, Healthcare, Food & Nutrition, Oil & Gas, and Agriculture sectors to modernize laboratory operations, improve data integrity, and enhance business efficiency through innovative and compliant technology solutions.</p>
+                <p>Our team of experienced consultants and technical experts delivers end-to-end services across the entire project lifecycle, including business process assessment, solution design, implementation, system integration, validation, deployment, training, and managed support. We are committed to helping organizations maximize the value of their technology investments while meeting global regulatory and quality standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISSION & VISION SECTION -->
+    <section class="mission-vision-section">
+        <div class="mv-container">
+            <div class="mv-heading">
+                <span class="mv-label">OUR PURPOSE</span>
+                <h2>Driven by Purpose.<br>Defined by Excellence.</h2>
+                <p>Building a smarter, more connected, and compliant future through technology.</p>
+            </div>
+            <div class="mv-cards">
+                <!-- MISSION -->
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 3L19 6V11C19 16 15.5 19.5 12 21C8.5 19.5 5 16 5 11V6L12 3Z"/>
+                            <path d="M9 12L11 14L15 10"/>
+                        </svg>
+                    </div>
+                    <span class="mv-card-label">MISSION</span>
+                    <h3>Our Mission</h3>
+                    <p>To deliver innovative, compliant, and value-driven technology solutions that empower organizations to achieve operational excellence, regulatory compliance, and sustainable growth.</p>
+                    <div class="mv-line"></div>
+                </div>
+                <!-- VISION -->
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M2 12S5.5 5 12 5S22 12 22 12S18.5 19 12 19S2 12 2 12Z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                    <span class="mv-card-label">VISION</span>
+                    <h3>Our Vision</h3>
+                    <p>To be a trusted global partner for laboratory digitalization and enterprise technology solutions, recognized for excellence, integrity, innovation, and customer success.</p>
+                    <div class="mv-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-content">
+                <span class="cta-label">LET'S CONNECT</span>
+                <h2>Let's Build Something<br><span>Extraordinary Together.</span></h2>
+                <p>Have a project in mind or looking for the right technology partner? Our team is ready to help you transform ideas into impactful solutions.</p>
+            </div>
+            <div class="cta-action">
+                <a href="contact.html" class="cta-btn">CONTACT US <span>↗</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="logo.png" alt="AssureInfo Technologies Logo" class="footer-logo">
+                <p>AssureInfo Technologies Pvt. Ltd. is a trusted technology consulting and services company focused on laboratory informatics, digital transformation, and enterprise support solutions.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="technologies.html">Technologies</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="#">Laboratory Informatics</a></li>
+                    <li><a href="#">Digital Transformation</a></li>
+                    <li><a href="#">Enterprise Solutions</a></li>
+                    <li><a href="#">System Integration</a></li>
+                    <li><a href="#">Validation & Compliance</a></li>
+                    <li><a href="#">Managed Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-contact">
+                <h3>Contact Us</h3>
+                <p><strong>Email</strong><br>info@assureinfo.com</p>
+                <p><strong>Phone</strong><br>+91 XXXXX XXXXX</p>
+                <p><strong>Location</strong><br>Tamil Nadu, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 AssureInfo Technologies Pvt. Ltd. All Rights Reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+
+        // Toggle menu
+        hamburger.addEventListener("click", function (e) {
+            e.stopPropagation(); // Prevent immediate closing
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("active");
+            const isOpen = navLinks.classList.contains("active");
+            hamburger.setAttribute("aria-expanded", isOpen);
+        });
+
+        // Close menu after clicking link
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+                hamburger.classList.remove("active");
+                hamburger.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", function (event) {
+            if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove("active");
+                hamburger.classList.remove("active");
+                hamburger.setAttribute("aria-expanded", "false");
+            }
+        });
+    </script>
+
+</body>
+</html>
