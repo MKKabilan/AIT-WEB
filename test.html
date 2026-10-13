@@ -2042,6 +2042,34 @@
             }
         }
 
+    
+
+        /* NAVBAR AND FOOTER: WHITE BRAND THEME */
+        .navbar {
+            background: #ffffff;
+            border-top-color: #e5e7eb;
+            border-bottom-color: #e5e7eb;
+        }
+        .nav-links a { color: #12316b; }
+        .nav-links a:hover,
+        .nav-links a.active { color: #d99a00; }
+        .contact-btn { background: #12316b; color: #ffffff !important; }
+        .contact-btn:hover { background: #d99a00; color: #10234f !important; }
+        .hamburger span { background: #12316b; }
+        .nav-links.active { background: #ffffff; border-bottom-color: #e5e7eb; }
+
+        .footer { background: #ffffff; color: #12316b; }
+        .footer-column h3,
+        .footer-contact strong { color: #12316b; }
+        .footer-brand p,
+        .footer-column ul li a,
+        .footer-contact p,
+        .footer-bottom p,
+        .footer-bottom-links a { color: #465675; }
+        .footer-column ul li a:hover,
+        .footer-bottom-links a:hover { color: #c58b00; }
+        .footer-bottom { border-top-color: #dce2ec; }
+
     </style>
 
 </head>
@@ -2059,7 +2087,7 @@
 
         <!-- LOGO -->
 
-        <a href="#" class="logo">
+        <a href="#home" class="logo" aria-label="AssureInfo Technologies home">
 
             <img
                 src="logo.png"
@@ -2074,27 +2102,27 @@
         <ul class="nav-links" id="navLinks">
 
             <li>
-                <a href="#" class="active">HOME</a>
+                <a href="#home" class="active">HOME</a>
             </li>
 
             <li>
-                <a href="#">SERVICES</a>
+                <a href="#about">ABOUT US</a>
             </li>
 
             <li>
-                <a href="#">TECHNOLOGIES</a>
+                <a href="#mission-vision">MISSION &amp; VISION</a>
             </li>
 
             <li>
-                <a href="#">INDUSTRIES</a>
+                <a href="#about">OUR EXPERTISE</a>
             </li>
 
             <li>
-                <a href="#">COMPANY</a>
+                <a href="#about">COMPANY</a>
             </li>
 
 <li>
-    <a href="#" class="contact-btn">CONTACT US</a>
+    <a href="#contact" class="contact-btn">CONTACT US</a>
 </li>
 
         </ul>
@@ -2119,7 +2147,7 @@
     </nav>
 <!-- HERO SECTION -->
 
-<section class="hero">
+<section class="hero" id="home">
 
     <div class="hero-overlay"></div>
 
@@ -2131,7 +2159,7 @@
     Providing innovative, compliant, and value-driven technology solutions for regulated industries.
 </p>
 
-<a href="#" class="hero-btn">
+<a href="#contact" class="hero-btn">
     CONTACT US
 </a>
     </div>
@@ -2139,7 +2167,7 @@
 </section>
 <!-- ABOUT SECTION -->
 
-<section class="about-section">
+<section class="about-section" id="about">
 
     <div class="about-container">
 
@@ -2191,7 +2219,7 @@
 </section>
 <!-- MISSION & VISION SECTION -->
 
-<section class="mission-vision-section">
+<section class="mission-vision-section" id="mission-vision">
 
     <div class="mv-container">
 
@@ -2298,7 +2326,7 @@
 </section>
 <!-- CTA SECTION -->
 
-<section class="cta-section">
+<section class="cta-section" id="contact">
 
     <div class="cta-container">
 
@@ -2322,7 +2350,7 @@
 
         <div class="cta-action">
 
-            <a href="contact.html" class="cta-btn">
+            <a href="mailto:info@assureinfo.com" class="cta-btn">
 
                 CONTACT US
 
@@ -2370,17 +2398,17 @@
 
             <ul>
 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="#home">Home</a></li>
 
-                <li><a href="services.html">Services</a></li>
+                <li><a href="#about">About Us</a></li>
 
-                <li><a href="technologies.html">Technologies</a></li>
+                <li><a href="#mission-vision">Mission &amp; Vision</a></li>
 
-                <li><a href="industries.html">Industries</a></li>
+                <li><a href="#about">Our Expertise</a></li>
 
-                <li><a href="company.html">Company</a></li>
+                <li><a href="#about">Company</a></li>
 
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
 
             </ul>
 
@@ -2420,7 +2448,7 @@
 
             <p>
                 <strong>Email</strong><br>
-                info@assureinfo.com
+                <a href="mailto:info@assureinfo.com">info@assureinfo.com</a>
             </p>
 
             <p>
