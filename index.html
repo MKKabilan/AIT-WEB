@@ -229,13 +229,23 @@
             gap: 0;
         }
 
-        .about-logo {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0px;
-        }
+.about-logo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    text-align: center;
+}
+
+.company-name {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.4;
+}
 
         .about-logo img {
             width: 100%;
@@ -760,12 +770,13 @@
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section class="about-section">
-        <div class="about-container">
-            <div class="about-logo">
-                <img src="logo.png" alt="AssureInfo Technologies Logo">
-            </div>
+<!-- ABOUT SECTION -->
+<section class="about-section">
+    <div class="about-container">
+        <div class="about-logo">
+            <img src="logo.png" alt="AssureInfo Technologies Logo">
+            <h3 class="company-name">AssureInfo Technologies</h3>
+        </div>
             <div class="about-content">
                 <p>Welcome to AssureInfo Technologies Pvt. Ltd. A trusted technology consulting and services company focused on laboratory informatics, digital transformation, and enterprise support solutions for regulated industries.</p>
                 <p>We partner with organizations in the Pharmaceutical, Biotechnology, Healthcare, Food & Nutrition, Oil & Gas, and Agriculture sectors to modernize laboratory operations, improve data integrity, and enhance business efficiency through innovative and compliant technology solutions.</p>
