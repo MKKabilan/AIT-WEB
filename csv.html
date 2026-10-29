@@ -151,8 +151,8 @@
         }
         .nav-links .dropdown.open .dropdown-toggle .arrow { transform: rotate(180deg); }
 
-        /* SERVICE HERO */
-        .service-hero {
+        /* SERVICE/TECH/INDUSTRY HERO */
+        .page-hero {
             position: relative;
             width: 100%;
             padding: clamp(70px, 10vw, 130px) 5% clamp(50px, 7vw, 90px);
@@ -161,7 +161,7 @@
                 radial-gradient(circle at 80% 20%, rgba(217, 154, 18, 0.18), transparent 55%);
             overflow: hidden;
         }
-        .service-hero::before {
+        .page-hero::before {
             content: '';
             position: absolute;
             top: 0; right: 0;
@@ -170,7 +170,7 @@
             background: radial-gradient(circle at 70% 50%, rgba(240, 181, 45, 0.08), transparent 60%);
             pointer-events: none;
         }
-        .service-hero-container {
+        .page-hero-container {
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
@@ -193,7 +193,7 @@
         .breadcrumb a:hover { color: #f0b52d; }
         .breadcrumb span.sep { color: #5a73a3; }
         .breadcrumb span.current { color: #f0b52d; }
-        .service-hero-label {
+        .page-hero-label {
             display: inline-block;
             font-size: 11px;
             font-weight: 700;
@@ -201,7 +201,7 @@
             color: #f0b52d;
             margin-bottom: 18px;
         }
-        .service-hero h1 {
+        .page-hero h1 {
             font-size: clamp(32px, 5vw, 64px);
             line-height: 1.12;
             font-weight: 800;
@@ -210,14 +210,22 @@
             color: #ffffff;
             max-width: 900px;
         }
-        .service-hero p {
+        .page-hero .hero-subtitle {
+            font-size: clamp(16px, 1.6vw, 22px);
+            line-height: 1.5;
+            color: #f0b52d;
+            font-weight: 600;
+            margin-bottom: 22px;
+            max-width: 800px;
+        }
+        .page-hero p.hero-desc {
             font-size: clamp(15px, 1.4vw, 19px);
             line-height: 1.8;
             color: #d7e2f7;
             max-width: 760px;
             margin-bottom: 32px;
         }
-        .service-hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+        .page-hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
         .hero-btn {
             display: inline-block;
             padding: 15px 30px;
@@ -292,10 +300,10 @@
             box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
         }
         .stat-number {
-            font-size: clamp(28px, 3vw, 40px);
+            font-size: clamp(24px, 2.6vw, 36px);
             font-weight: 800;
             color: #f0b52d;
-            line-height: 1;
+            line-height: 1.1;
             margin-bottom: 10px;
         }
         .stat-label {
@@ -312,10 +320,7 @@
             background: #071a3d;
         }
         .offerings-container { width: 100%; max-width: 1400px; margin: 0 auto; }
-        .section-heading {
-            max-width: 760px;
-            margin-bottom: 50px;
-        }
+        .section-heading { max-width: 760px; margin-bottom: 50px; }
         .section-heading h2 {
             font-size: clamp(28px, 3.5vw, 48px);
             line-height: 1.2;
@@ -487,20 +492,69 @@
             color: #d7e2f7;
         }
 
-        /* OTHER SERVICES */
-        .other-services-section {
+        /* USE CASES SECTION */
+        .usecases-section {
             width: 100%;
             padding: clamp(60px, 8vw, 110px) 5%;
             background: #0a214b;
         }
-        .other-services-container { width: 100%; max-width: 1400px; margin: 0 auto; }
-        .other-services-grid {
+        .usecases-container { width: 100%; max-width: 1400px; margin: 0 auto; }
+        .usecases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .usecase-card {
+            background: linear-gradient(145deg, #102d61, #0a214b);
+            border: 1px solid rgba(240, 181, 45, 0.35);
+            border-radius: 12px;
+            padding: 30px 26px;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .usecase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.36);
+        }
+        .usecase-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #071a3d;
+            border: 1px solid rgba(240, 181, 45, 0.45);
+            border-radius: 10px;
+            color: #f0b52d;
+            margin-bottom: 20px;
+        }
+        .usecase-icon svg { width: 24px; height: 24px; }
+        .usecase-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #f3f6ff;
+            margin-bottom: 12px;
+        }
+        .usecase-card p {
+            font-size: 13.5px;
+            line-height: 1.7;
+            color: #d7e2f7;
+        }
+
+        /* RELATED PAGES */
+        .related-section {
+            width: 100%;
+            padding: clamp(60px, 8vw, 110px) 5%;
+            background: #0a214b;
+        }
+        .related-container { width: 100%; max-width: 1400px; margin: 0 auto; }
+        .related-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 22px;
             margin-top: 40px;
         }
-        .other-service-card {
+        .related-card {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -512,18 +566,18 @@
             color: #f3f6ff;
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
-        .other-service-card:hover {
+        .related-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
             border-color: rgba(240, 181, 45, 0.75);
         }
-        .other-service-card span.title {
+        .related-card span.title {
             font-size: 15px;
             font-weight: 700;
             color: #f3f6ff;
             line-height: 1.35;
         }
-        .other-service-card span.arrow {
+        .related-card span.arrow {
             color: #f0b52d;
             font-size: 18px;
             font-weight: 700;
@@ -600,8 +654,8 @@
             max-width: 1400px;
             margin: auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1.4fr 1.3fr;
-            gap: 50px;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.2fr;
+            gap: 40px;
             padding-bottom: 60px;
         }
         .footer-brand { max-width: 360px; }
@@ -645,18 +699,11 @@
         /* MEDIA QUERIES */
         @media (min-width: 1920px) {
             .navbar { padding-left: 20%; padding-right: 20%; }
-            .service-hero-container,
-            .overview-container,
-            .offerings-container,
-            .benefits-container,
-            .approach-container,
-            .other-services-container,
-            .cta-container,
-            .footer-container { max-width: 1600px; }
+            .page-hero-container, .overview-container, .offerings-container,
+            .benefits-container, .approach-container, .usecases-container,
+            .related-container, .cta-container, .footer-container { max-width: 1600px; }
         }
-        @media (min-width: 1600px) {
-            .navbar { padding-left: 16%; padding-right: 16%; }
-        }
+        @media (min-width: 1600px) { .navbar { padding-left: 16%; padding-right: 16%; } }
         @media (max-width: 1280px) {
             .navbar { padding-left: clamp(20px, 5vw, 80px); padding-right: clamp(20px, 5vw, 80px); }
             .nav-links { gap: clamp(12px, 1.5vw, 24px); }
@@ -669,10 +716,11 @@
             .offerings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .benefits-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .approach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .other-services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .usecases-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         @media (max-width: 1024px) {
-            .service-hero { padding: 75px 4% 70px; }
+            .page-hero { padding: 75px 4% 70px; }
             .overview-section { padding: 70px 4%; }
             .overview-container { grid-template-columns: 1fr; gap: 40px; }
             .overview-stats { grid-template-columns: repeat(2, 1fr); }
@@ -683,12 +731,14 @@
             .benefit-card { padding: 28px 22px; }
             .approach-section { padding: 70px 4%; }
             .approach-step { padding: 28px 22px; }
-            .other-services-section { padding: 70px 4%; }
+            .usecases-section { padding: 70px 4%; }
+            .usecase-card { padding: 28px 22px; }
+            .related-section { padding: 70px 4%; }
             .cta-section { padding: 70px 4%; }
             .cta-container { gap: 30px; }
             .cta-btn { padding: 16px 22px; }
             .footer { padding: 60px 4% 0; }
-            .footer-container { grid-template-columns: repeat(2, 1fr); gap: 45px; }
+            .footer-container { grid-template-columns: repeat(3, 1fr); gap: 35px; }
             .footer-brand { max-width: 100%; }
         }
         @media (max-width: 768px) {
@@ -746,10 +796,11 @@
                 width: 100%;
             }
 
-            .service-hero { padding: 60px 20px 55px; text-align: left; }
-            .service-hero h1 { font-size: clamp(28px, 7vw, 44px); }
-            .service-hero p { font-size: 15px; }
-            .service-hero-actions { flex-direction: column; align-items: stretch; }
+            .page-hero { padding: 60px 20px 55px; text-align: left; }
+            .page-hero h1 { font-size: clamp(28px, 7vw, 44px); }
+            .page-hero .hero-subtitle { font-size: 16px; }
+            .page-hero p.hero-desc { font-size: 15px; }
+            .page-hero-actions { flex-direction: column; align-items: stretch; }
             .hero-btn { text-align: center; }
 
             .overview-section { padding: 55px 20px; }
@@ -770,8 +821,12 @@
             .approach-grid { grid-template-columns: 1fr; gap: 18px; }
             .approach-step { padding: 26px 22px; }
 
-            .other-services-section { padding: 55px 20px; }
-            .other-services-grid { grid-template-columns: 1fr; gap: 14px; }
+            .usecases-section { padding: 55px 20px; }
+            .usecases-grid { grid-template-columns: 1fr; gap: 18px; }
+            .usecase-card { padding: 26px 22px; }
+
+            .related-section { padding: 55px 20px; }
+            .related-grid { grid-template-columns: 1fr; gap: 14px; }
 
             .cta-section { padding: 55px 20px; }
             .cta-container { flex-direction: column; text-align: center; gap: 30px; }
@@ -794,9 +849,9 @@
             .logo img { width: 90px; max-height: 55px; }
             .nav-links { padding: 15px 20px 20px; }
 
-            .service-hero { padding: 50px 16px 45px; }
-            .service-hero h1 { font-size: clamp(26px, 8vw, 36px); letter-spacing: -0.5px; }
-            .service-hero p { font-size: 14px; line-height: 1.7; }
+            .page-hero { padding: 50px 16px 45px; }
+            .page-hero h1 { font-size: clamp(26px, 8vw, 36px); letter-spacing: -0.5px; }
+            .page-hero p.hero-desc { font-size: 14px; line-height: 1.7; }
             .hero-btn { padding: 14px 22px; font-size: 11px; }
 
             .overview-section { padding: 45px 16px; }
@@ -804,7 +859,7 @@
             .overview-text p { font-size: 14px; line-height: 1.8; }
             .overview-stats { grid-template-columns: 1fr; }
             .stat-card { padding: 20px 16px; }
-            .stat-number { font-size: 30px; }
+            .stat-number { font-size: 26px; }
 
             .offerings-section { padding: 45px 16px; }
             .section-heading h2 { font-size: 26px; }
@@ -823,9 +878,14 @@
             .approach-step h3 { font-size: 17px; }
             .approach-step p { font-size: 13px; }
 
-            .other-services-section { padding: 45px 16px; }
-            .other-service-card { padding: 18px 18px; }
-            .other-service-card span.title { font-size: 14px; }
+            .usecases-section { padding: 45px 16px; }
+            .usecase-card { padding: 22px 18px; }
+            .usecase-card h3 { font-size: 17px; }
+            .usecase-card p { font-size: 13px; }
+
+            .related-section { padding: 45px 16px; }
+            .related-card { padding: 18px 18px; }
+            .related-card span.title { font-size: 14px; }
 
             .cta-section { padding: 45px 16px; }
             .cta-content h2 { font-size: 26px; }
@@ -838,7 +898,7 @@
             .footer-bottom-links a { font-size: 12px; }
         }
         @media (max-width: 360px) {
-            .service-hero h1 { font-size: 24px; }
+            .page-hero h1 { font-size: 24px; }
             .overview-text h2 { font-size: 22px; }
             .section-heading h2 { font-size: 22px; }
             .cta-content h2 { font-size: 22px; }
@@ -877,11 +937,13 @@
                 TECHNOLOGIES <span class="arrow">&#9662;</span>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="technologies.html#laboratory-systems">Laboratory Systems</a></li>
-                <li><a href="technologies.html#data-management">Data Management</a></li>
-                <li><a href="technologies.html#cloud-solutions">Cloud Solutions</a></li>
-                <li><a href="technologies.html#automation">Automation &amp; Integration</a></li>
-                <li><a href="technologies.html#analytics">Data Analytics</a></li>
+                <li><a href="lims.html">LIMS</a></li>
+                <li><a href="eln.html">ELN</a></li>
+                <li><a href="empower.html">Empower</a></li>
+                <li><a href="nugenesis.html">NuGenesis (SDMS)</a></li>
+                <li><a href="chromeleon.html">Chromeleon</a></li>
+                <li><a href="moda.html">MODA</a></li>
+                <li><a href="minitab.html">Minitab</a></li>
             </ul>
         </li>
 
@@ -890,12 +952,12 @@
                 INDUSTRIES <span class="arrow">&#9662;</span>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="industries.html#pharmaceuticals">Pharmaceuticals</a></li>
-                <li><a href="industries.html#biotechnology">Biotechnology</a></li>
-                <li><a href="industries.html#healthcare">Healthcare</a></li>
-                <li><a href="industries.html#food-nutrition">Food &amp; Nutrition</a></li>
-                <li><a href="industries.html#oil-gas">Oil &amp; Gas</a></li>
-                <li><a href="industries.html#agriculture">Agriculture</a></li>
+                <li><a href="pharmaceutical.html">Pharmaceutical</a></li>
+                <li><a href="biotechnology.html">Biotechnology</a></li>
+                <li><a href="healthcare.html">Healthcare</a></li>
+                <li><a href="food-nutrition.html">Food and Nutrition</a></li>
+                <li><a href="oil-gas.html">Oil and Gas</a></li>
+                <li><a href="agriculture.html">Agriculture</a></li>
             </ul>
         </li>
 
@@ -914,9 +976,9 @@
     </button>
 </nav>
 
-    <!-- SERVICE HERO -->
-    <section class="service-hero">
-        <div class="service-hero-container">
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-container">
             <div class="breadcrumb">
                 <a href="index.html">Home</a>
                 <span class="sep">/</span>
@@ -924,10 +986,10 @@
                 <span class="sep">/</span>
                 <span class="current">Computer System Validation (CSV)</span>
             </div>
-            <span class="service-hero-label">CATEGORY E</span>
+            <span class="page-hero-label">CATEGORY E</span>
             <h1>Computer System Validation (CSV)</h1>
-            <p>In regulated industries, every GxP computer system must be validated to demonstrate it is fit for its intended use. Our CSV services cover the full validation lifecycle from GxP assessment through validation summary report, aligned with GAMP 5, 21 CFR Part 11, and EU Annex 11.</p>
-            <div class="service-hero-actions">
+            <p class="hero-desc">In regulated industries, every GxP computer system must be validated to demonstrate it is fit for its intended use. Our CSV services cover the full validation lifecycle from GxP assessment through validation summary report, aligned with GAMP 5, 21 CFR Part 11, and EU Annex 11.</p>
+            <div class="page-hero-actions">
                 <a href="contact.html" class="hero-btn">GET IN TOUCH</a>
                 <a href="#offerings" class="hero-btn secondary">EXPLORE OFFERINGS</a>
             </div>
@@ -1058,12 +1120,12 @@
                     <p>Risk-based validation focuses effort where it matters most, reducing both validation cost and the probability of critical failures.</p>
                 </div>
                 <div class="benefit-card">
-                    <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="15" y2="17"></line></svg></div>
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
                     <h3>Audit Readiness</h3>
                     <p>Complete, traceable, and current documentation ensures you are ready for any internal audit or external regulatory inspection at any time.</p>
                 </div>
                 <div class="benefit-card">
-                    <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><path d="M9 14l2 2 4-4"></path></svg></div>
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
                     <h3>Data Integrity</h3>
                     <p>Validation confirms that data is complete, consistent, accurate, and traceable throughout its lifecycle, in line with ALCOA+ principles.</p>
                 </div>
@@ -1071,7 +1133,7 @@
         </div>
     </section>
 
-    <!-- APPROACH -->
+    <!-- APPROACH OR USE CASES -->
     <section class="approach-section">
         <div class="approach-container">
             <div class="section-heading">
@@ -1104,32 +1166,32 @@
         </div>
     </section>
 
-    <!-- OTHER SERVICES -->
-    <section class="other-services-section">
-        <div class="other-services-container">
+    <!-- RELATED PAGES -->
+    <section class="related-section">
+        <div class="related-container">
             <div class="section-heading">
                 <span class="section-label">EXPLORE MORE</span>
                 <h2>Other Services</h2>
                 <p>Discover the full range of services we offer to help you build, validate, and sustain compliant laboratory and enterprise technology solutions.</p>
             </div>
-            <div class="other-services-grid">
-                <a href="master-data.html" class="other-service-card">
+            <div class="related-grid">
+                <a href="master-data.html" class="related-card">
                     <span class="title">Master Data</span>
                     <span class="arrow">&#8594;</span>
                 </a>
-                <a href="implementation.html" class="other-service-card">
+                <a href="implementation.html" class="related-card">
                     <span class="title">Implementation</span>
                     <span class="arrow">&#8594;</span>
                 </a>
-                <a href="digital-transformation.html" class="other-service-card">
+                <a href="digital-transformation.html" class="related-card">
                     <span class="title">Digital Transformation</span>
                     <span class="arrow">&#8594;</span>
                 </a>
-                <a href="interfaces.html" class="other-service-card">
+                <a href="interfaces.html" class="related-card">
                     <span class="title">Interfaces</span>
                     <span class="arrow">&#8594;</span>
                 </a>
-                <a href="operational-support.html" class="other-service-card">
+                <a href="operational-support.html" class="related-card">
                     <span class="title">Operational Support</span>
                     <span class="arrow">&#8594;</span>
                 </a>
@@ -1180,6 +1242,29 @@
                     <li><a href="operational-support.html">Operational Support</a></li>
                 </ul>
             </div>
+            <div class="footer-column">
+                <h3>Technologies</h3>
+                <ul>
+                    <li><a href="lims.html">LIMS</a></li>
+                    <li><a href="eln.html">ELN</a></li>
+                    <li><a href="empower.html">Empower</a></li>
+                    <li><a href="nugenesis.html">NuGenesis (SDMS)</a></li>
+                    <li><a href="chromeleon.html">Chromeleon</a></li>
+                    <li><a href="moda.html">MODA</a></li>
+                    <li><a href="minitab.html">Minitab</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Industries</h3>
+                <ul>
+                    <li><a href="pharmaceutical.html">Pharmaceutical</a></li>
+                    <li><a href="biotechnology.html">Biotechnology</a></li>
+                    <li><a href="healthcare.html">Healthcare</a></li>
+                    <li><a href="food-nutrition.html">Food and Nutrition</a></li>
+                    <li><a href="oil-gas.html">Oil and Gas</a></li>
+                    <li><a href="agriculture.html">Agriculture</a></li>
+                </ul>
+            </div>
             <div class="footer-column footer-contact">
                 <h3>Contact Us</h3>
                 <p><strong>Email</strong><br>info@assureinfo.com</p>
@@ -1217,9 +1302,7 @@
                 document.querySelectorAll(".nav-links .dropdown").forEach(item => {
                     item.classList.remove("open");
                 });
-                if (!isOpen) {
-                    dropdown.classList.add("open");
-                }
+                if (!isOpen) { dropdown.classList.add("open"); }
             }
         });
     });

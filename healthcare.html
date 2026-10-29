@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Healthcare Industry Solutions | AssureInfo Technologies</title>
+    <meta name="description" content="Digital solutions supporting laboratory processes, information management, and data integrity in healthcare environments.">
+    <link rel="icon" href="logo.png" type="image/png">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            scroll-padding-top: 100px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #071a3d;
+            color: #f3f6ff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid #d99a12;
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* NAVBAR */
+        .navbar {
+            width: 100%;
+            min-height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px clamp(20px, 8vw, 160px);
+            background: #ffffff;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            position: relative;
+            z-index: 1000;
+        }
+        .logo { display: flex; align-items: center; flex-shrink: 0; }
+        .logo img { width: 105px; height: auto; max-height: 65px; object-fit: contain; display: block; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: clamp(15px, 2vw, 34px);
+            list-style: none;
+        }
+        .nav-links li { display: flex; align-items: center; }
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #12316b;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #d99a00; }
+        .contact-btn {
+            background: #12316b;
+            color: #ffffff !important;
+            padding: 12px 22px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease;
+        }
+        .contact-btn:hover { background: #d99a00; color: #10234f !important; }
+        .hamburger {
+            display: none;
+            width: 42px;
+            height: 42px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            padding: 0;
+        }
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: #12316b;
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* DROPDOWN */
+        .nav-links .dropdown { position: relative; }
+        .nav-links .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 260px;
+            background: #fff;
+            padding: 8px 0;
+            margin: 0;
+            list-style: none;
+            border-top: 3px solid #d99a12;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+        }
+        .nav-links .dropdown:hover .dropdown-menu,
+        .nav-links .dropdown:focus-within .dropdown-menu { display: block; }
+        .nav-links .dropdown.open .dropdown-menu { display: block; }
+        .nav-links .dropdown-menu li a {
+            display: block;
+            padding: 12px 18px;
+            white-space: nowrap;
+            color: #12316b;
+            text-decoration: none;
+        }
+        .nav-links .dropdown-menu li a:hover,
+        .nav-links .dropdown-menu li a.active-page {
+            background: #f5f5f5;
+            color: #d99a12;
+        }
+        .nav-links .dropdown-toggle .arrow {
+            display: inline-block;
+            font-size: 10px;
+            margin-left: 4px;
+            transition: transform 0.3s ease;
+            line-height: 1;
+        }
+        .nav-links .dropdown.open .dropdown-toggle .arrow { transform: rotate(180deg); }
+
+        /* SERVICE/TECH/INDUSTRY HERO */
+        .page-hero {
+            position: relative;
+            width: 100%;
+            padding: clamp(70px, 10vw, 130px) 5% clamp(50px, 7vw, 90px);
+            background:
+                linear-gradient(135deg, rgba(7, 26, 61, 0.92), rgba(10, 33, 75, 0.88)),
+                radial-gradient(circle at 80% 20%, rgba(217, 154, 18, 0.18), transparent 55%);
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 50%, rgba(240, 181, 45, 0.08), transparent 60%);
+            pointer-events: none;
+        }
+        .page-hero-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #f0b52d;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+        }
+        .breadcrumb a { color: #d7e2f7; transition: color 0.3s ease; }
+        .breadcrumb a:hover { color: #f0b52d; }
+        .breadcrumb span.sep { color: #5a73a3; }
+        .breadcrumb span.current { color: #f0b52d; }
+        .page-hero-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #f0b52d;
+            margin-bottom: 18px;
+        }
+        .page-hero h1 {
+            font-size: clamp(32px, 5vw, 64px);
+            line-height: 1.12;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 22px;
+            color: #ffffff;
+            max-width: 900px;
+        }
+        .page-hero .hero-subtitle {
+            font-size: clamp(16px, 1.6vw, 22px);
+            line-height: 1.5;
+            color: #f0b52d;
+            font-weight: 600;
+            margin-bottom: 22px;
+            max-width: 800px;
+        }
+        .page-hero p.hero-desc {
+            font-size: clamp(15px, 1.4vw, 19px);
+            line-height: 1.8;
+            color: #d7e2f7;
+            max-width: 760px;
+            margin-bottom: 32px;
+        }
+        .page-hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+        .hero-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #d99a12;
+            color: #071a3d;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+            transition: 0.3s ease;
+        }
+        .hero-btn:hover { background: #f0b52d; color: #071a3d; transform: translateY(-2px); }
+        .hero-btn.secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(240, 181, 45, 0.6);
+        }
+        .hero-btn.secondary:hover { background: rgba(240, 181, 45, 0.12); color: #ffffff; }
+
+        /* OVERVIEW SECTION */
+        .overview-section {
+            width: 100%;
+            padding: clamp(60px, 8vw, 110px) 5%;
+            background: #0a214b;
+        }
+        .overview-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        .overview-text { max-width: 700px; }
+        .section-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #f0b52d;
+            margin-bottom: 18px;
+        }
+        .overview-text h2 {
+            font-size: clamp(26px, 3.2vw, 44px);
+            line-height: 1.2;
+            font-weight: 700;
+            color: #f3f6ff;
+            margin-bottom: 26px;
+        }
+        .overview-text p {
+            font-size: clamp(14px, 1.15vw, 16.5px);
+            line-height: 1.85;
+            color: #d7e2f7;
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+        .overview-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+        .stat-card {
+            background: linear-gradient(145deg, #102d61, #0a214b);
+            border: 1px solid rgba(240, 181, 45, 0.4);
+            border-radius: 12px;
+            padding: 28px 24px;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
+        }
+        .stat-number {
+            font-size: clamp(24px, 2.6vw, 36px);
+            font-weight: 800;
+            color: #f0b52d;
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+        .stat-label {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #d7e2f7;
+            font-weight: 600;
+        }
+
+        /* OFFERINGS SECTION */
+        .offerings-section {
+            width: 100%;
+            padding: clamp(65px, 9vw, 120px) 5%;
+            background: #071a3d;
+        }
+        .offerings-container { width: 100%; max-width: 1400px; margin: 0 auto; }
+        .section-heading { max-width: 760px; margin-bottom: 50px; }
+        .section-heading h2 {
+            font-size: clamp(28px, 3.5vw, 48px);
+            line-height: 1.2;
+            font-weight: 700;
+            color: #f3f6ff;
+            margin-bottom: 18px;
+        }
+        .section-heading p {
+            font-size: clamp(14px, 1.2vw, 17px);
+            line-height: 1.8;
+            color: #d7e2f7;
+            max-width: 700px;
+        }
+        .offerings-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+        }
+        .offering-card {
+            position: relative;
+            background: linear-gradient(145deg, #102d61, #0a214b);
+            padding: 32px 28px;
+            border: 1px solid rgba(240, 181, 45, 0.4);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .offering-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+            border-color: rgba(240, 181, 45, 0.75);
+        }
+        .offering-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            background: #071a3d;
+            border: 1px solid rgba(240, 181, 45, 0.45);
+            border-radius: 10px;
+            color: #f0b52d;
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 22px;
+        }
+        .offering-card h3 {
+            font-size: clamp(17px, 1.4vw, 20px);
+            font-weight: 700;
+            color: #f3f6ff;
+            margin-bottom: 14px;
+            line-height: 1.35;
+        }
+        .offering-card p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #d7e2f7;
+        }
+        .offering-line {
+            width: 38px;
+            height: 3px;
+            background: #d99a12;
+            margin-top: 22px;
+            border-radius: 5px;
+        }
+
+        /* BENEFITS SECTION */
+        .benefits-section {
+            width: 100%;
+            padding: clamp(60px, 8vw, 110px) 5%;
+            background: #0a214b;
+        }
+        .benefits-container { width: 100%; max-width: 1400px; margin: 0 auto; }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .benefit-card {
+            background: linear-gradient(145deg, #102d61, #0a214b);
+            border: 1px solid rgba(240, 181, 45, 0.35);
+            border-radius: 12px;
+            padding: 30px 24px;
+            text-align: left;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.36);
+        }
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #071a3d;
+            border: 1px solid rgba(240, 181, 45, 0.45);
+            border-radius: 10px;
+            color: #f0b52d;
+            margin-bottom: 20px;
+        }
+        .benefit-icon svg { width: 24px; height: 24px; }
+        .benefit-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #f3f6ff;
+            margin-bottom: 12px;
+            line-height: 1.35;
+        }
+        .benefit-card p {
+            font-size: 13.5px;
+            line-height: 1.7;
+            color: #d7e2f7;
+        }
+
+        /* APPROACH SECTION */
+        .approach-section {
+            width: 100%;
+            padding: clamp(60px, 8vw, 110px) 5%;
+            background: #071a3d;
+            position: relative;
+        }
+        .approach-container { width: 100%; max-width: 1400px; margin: 0 auto; }
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+            position: relative;
+        }
+        .approach-step {
+            position: relative;
+            background: linear-gradient(145deg, #102d61, #0a214b);
+            border: 1px solid rgba(240, 181, 45, 0.4);
+            border-radius: 12px;
+            padding: 32px 26px;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .approach-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.36);
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: #d99a12;
+            color: #071a3d;
+            border-radius: 50%;
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .approach-step h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #f3f6ff;
+            margin-bottom: 12px;
+        }
+        .approach-step p {
+            font-size: 13.5px;
+            line-height: 1.7;
+            color: #d7e2f7;
+        }
+
+        /* USE CASES SECTION */
+        .usecases-section {
+            width: 100%;
+            padding: clamp(60px, 8vw, 110px) 5%;
+            background: #0a214b;
+        }
+        .usecases-container { width: 100%; max-width: 1400px; margin: 0 auto; }
+        .usecases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .usecase-card {
+            background: linear-gradient(145deg, #102d61, #0a214b);
+            border: 1px solid rgba(240, 181, 45, 0.35);
+            border-radius: 12px;
+            padding: 30px 26px;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .usecase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.36);
+        }
+        .usecase-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #071a3d;
+            border: 1px solid rgba(240, 181, 45, 0.45);
+            border-radius: 10px;
+            color: #f0b52d;
+            margin-bottom: 20px;
+        }
+        .usecase-icon svg { width: 24px; height: 24px; }
+        .usecase-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #f3f6ff;
+            margin-bottom: 12px;
+        }
+        .usecase-card p {
+            font-size: 13.5px;
+            line-height: 1.7;
+            color: #d7e2f7;
+        }
+
+        /* RELATED PAGES */
+        .related-section {
+            width: 100%;
+            padding: clamp(60px, 8vw, 110px) 5%;
+            background: #0a214b;
+        }
+        .related-container { width: 100%; max-width: 1400px; margin: 0 auto; }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            margin-top: 40px;
+        }
+        .related-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: linear-gradient(145deg, #102d61, #0a214b);
+            border: 1px solid rgba(240, 181, 45, 0.35);
+            border-radius: 10px;
+            padding: 22px 24px;
+            color: #f3f6ff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .related-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+            border-color: rgba(240, 181, 45, 0.75);
+        }
+        .related-card span.title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #f3f6ff;
+            line-height: 1.35;
+        }
+        .related-card span.arrow {
+            color: #f0b52d;
+            font-size: 18px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            width: 100%;
+            padding: clamp(60px, 8vw, 110px) 5%;
+            background: #071a3d;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+        .cta-content { max-width: 800px; }
+        .cta-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #f0b52d;
+            margin-bottom: 20px;
+        }
+        .cta-content h2 {
+            font-size: clamp(30px, 4vw, 58px);
+            line-height: 1.2;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+        .cta-content h2 span { color: #f0b52d; }
+        .cta-content p {
+            font-size: clamp(14px, 1.2vw, 17px);
+            line-height: 1.8;
+            color: #dce7f8;
+            max-width: 620px;
+        }
+        .cta-action { flex-shrink: 0; }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 22px;
+            padding: 18px 28px;
+            background: #d99a12;
+            color: #071a3d;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .cta-btn span { font-size: 22px; line-height: 1; }
+        .cta-btn:hover { background: #f0b52d; transform: translateY(-3px); }
+
+        /* FOOTER */
+        .footer {
+            width: 100%;
+            background: #ffffff;
+            color: #12316b;
+            padding: 75px 5% 0;
+        }
+        .footer-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.2fr;
+            gap: 40px;
+            padding-bottom: 60px;
+        }
+        .footer-brand { max-width: 360px; }
+        .footer-logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 25px;
+            background: transparent;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .footer-brand p { font-size: 15px; line-height: 1.9; color: #465675; }
+        .footer-column h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #12316b;
+        }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 15px; }
+        .footer-column ul li a { font-size: 14px; color: #465675; transition: color 0.3s ease; }
+        .footer-column ul li a:hover { color: #c58b00; }
+        .footer-contact p { font-size: 14px; line-height: 1.8; color: #465675; margin-bottom: 18px; }
+        .footer-contact strong { color: #12316b; font-weight: 600; }
+        .footer-bottom {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            padding: 25px 0;
+            border-top: 1px solid #dce2ec;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        .footer-bottom p { font-size: 13px; color: #465675; }
+        .footer-bottom-links { display: flex; gap: 25px; }
+        .footer-bottom-links a { font-size: 13px; color: #465675; }
+        .footer-bottom-links a:hover { color: #c58b00; }
+
+        /* MEDIA QUERIES */
+        @media (min-width: 1920px) {
+            .navbar { padding-left: 20%; padding-right: 20%; }
+            .page-hero-container, .overview-container, .offerings-container,
+            .benefits-container, .approach-container, .usecases-container,
+            .related-container, .cta-container, .footer-container { max-width: 1600px; }
+        }
+        @media (min-width: 1600px) { .navbar { padding-left: 16%; padding-right: 16%; } }
+        @media (max-width: 1280px) {
+            .navbar { padding-left: clamp(20px, 5vw, 80px); padding-right: clamp(20px, 5vw, 80px); }
+            .nav-links { gap: clamp(12px, 1.5vw, 24px); }
+            .nav-links a { font-size: 12.5px; }
+        }
+        @media (max-width: 1100px) {
+            .navbar { padding: 12px 4%; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 12px; }
+            .offerings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .benefits-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .approach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .usecases-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 1024px) {
+            .page-hero { padding: 75px 4% 70px; }
+            .overview-section { padding: 70px 4%; }
+            .overview-container { grid-template-columns: 1fr; gap: 40px; }
+            .overview-stats { grid-template-columns: repeat(2, 1fr); }
+            .offerings-section { padding: 70px 4%; }
+            .offerings-grid { gap: 22px; }
+            .offering-card { padding: 28px 24px; }
+            .benefits-section { padding: 70px 4%; }
+            .benefit-card { padding: 28px 22px; }
+            .approach-section { padding: 70px 4%; }
+            .approach-step { padding: 28px 22px; }
+            .usecases-section { padding: 70px 4%; }
+            .usecase-card { padding: 28px 22px; }
+            .related-section { padding: 70px 4%; }
+            .cta-section { padding: 70px 4%; }
+            .cta-container { gap: 30px; }
+            .cta-btn { padding: 16px 22px; }
+            .footer { padding: 60px 4% 0; }
+            .footer-container { grid-template-columns: repeat(3, 1fr); gap: 35px; }
+            .footer-brand { max-width: 100%; }
+        }
+        @media (max-width: 768px) {
+            .navbar { min-height: 75px; padding: 10px 20px; }
+            .logo img { width: 100px; max-height: 60px; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                max-height: calc(100vh - 75px);
+                overflow-y: auto;
+                padding: 20px 25px 25px;
+                background: #ffffff;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                border-bottom: 1px solid #e5e7eb;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { width: 100%; position: relative; }
+            .nav-links a { display: block; width: 100%; padding: 15px 0; font-size: 14px; letter-spacing: 0.8px; }
+            .nav-links a.contact-btn {
+                display: inline-block;
+                width: fit-content;
+                margin: 15px 0 5px;
+                padding: 13px 25px;
+            }
+            .nav-links .dropdown-menu {
+                position: static;
+                display: none;
+                top: auto;
+                left: auto;
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
+                box-shadow: none;
+                border-top: none;
+                border-left: 3px solid #d99a12;
+                margin: 0 0 5px 0;
+                padding: 6px 0 6px 15px;
+                background: #f8fafc;
+            }
+            .nav-links .dropdown.open .dropdown-menu { display: block; }
+            .nav-links .dropdown:hover .dropdown-menu,
+            .nav-links .dropdown:focus-within .dropdown-menu { display: none; }
+            .nav-links .dropdown-menu li a { padding: 10px 12px; font-size: 13px; }
+            .nav-links .dropdown-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .page-hero { padding: 60px 20px 55px; text-align: left; }
+            .page-hero h1 { font-size: clamp(28px, 7vw, 44px); }
+            .page-hero .hero-subtitle { font-size: 16px; }
+            .page-hero p.hero-desc { font-size: 15px; }
+            .page-hero-actions { flex-direction: column; align-items: stretch; }
+            .hero-btn { text-align: center; }
+
+            .overview-section { padding: 55px 20px; }
+            .overview-container { gap: 30px; }
+            .overview-text h2 { font-size: clamp(24px, 6vw, 32px); }
+            .overview-stats { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .stat-card { padding: 22px 18px; }
+
+            .offerings-section { padding: 55px 20px; }
+            .offerings-grid { grid-template-columns: 1fr; gap: 18px; }
+            .offering-card { padding: 26px 22px; }
+
+            .benefits-section { padding: 55px 20px; }
+            .benefits-grid { grid-template-columns: 1fr; gap: 18px; }
+            .benefit-card { padding: 26px 22px; }
+
+            .approach-section { padding: 55px 20px; }
+            .approach-grid { grid-template-columns: 1fr; gap: 18px; }
+            .approach-step { padding: 26px 22px; }
+
+            .usecases-section { padding: 55px 20px; }
+            .usecases-grid { grid-template-columns: 1fr; gap: 18px; }
+            .usecase-card { padding: 26px 22px; }
+
+            .related-section { padding: 55px 20px; }
+            .related-grid { grid-template-columns: 1fr; gap: 14px; }
+
+            .cta-section { padding: 55px 20px; }
+            .cta-container { flex-direction: column; text-align: center; gap: 30px; }
+            .cta-content { max-width: 100%; }
+            .cta-content p { margin: auto; }
+            .cta-action { width: 100%; }
+            .cta-btn { width: 100%; max-width: 280px; }
+
+            .footer { padding: 50px 20px 0; }
+            .footer-container { grid-template-columns: 1fr; gap: 35px; padding-bottom: 40px; }
+            .footer-brand { max-width: 100%; }
+            .footer-logo { width: 140px; }
+            .footer-column h3 { margin-bottom: 18px; }
+            .footer-column ul li { margin-bottom: 12px; }
+            .footer-bottom { flex-direction: column; text-align: center; gap: 15px; }
+            .footer-bottom-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
+        }
+        @media (max-width: 480px) {
+            .navbar { min-height: 70px; padding: 8px 15px; }
+            .logo img { width: 90px; max-height: 55px; }
+            .nav-links { padding: 15px 20px 20px; }
+
+            .page-hero { padding: 50px 16px 45px; }
+            .page-hero h1 { font-size: clamp(26px, 8vw, 36px); letter-spacing: -0.5px; }
+            .page-hero p.hero-desc { font-size: 14px; line-height: 1.7; }
+            .hero-btn { padding: 14px 22px; font-size: 11px; }
+
+            .overview-section { padding: 45px 16px; }
+            .overview-text h2 { font-size: 24px; }
+            .overview-text p { font-size: 14px; line-height: 1.8; }
+            .overview-stats { grid-template-columns: 1fr; }
+            .stat-card { padding: 20px 16px; }
+            .stat-number { font-size: 26px; }
+
+            .offerings-section { padding: 45px 16px; }
+            .section-heading h2 { font-size: 26px; }
+            .section-heading p { font-size: 14px; }
+            .offering-card { padding: 22px 18px; }
+            .offering-card h3 { font-size: 17px; }
+            .offering-card p { font-size: 13.5px; }
+
+            .benefits-section { padding: 45px 16px; }
+            .benefit-card { padding: 22px 18px; }
+            .benefit-card h3 { font-size: 16px; }
+            .benefit-card p { font-size: 13px; }
+
+            .approach-section { padding: 45px 16px; }
+            .approach-step { padding: 22px 18px; }
+            .approach-step h3 { font-size: 17px; }
+            .approach-step p { font-size: 13px; }
+
+            .usecases-section { padding: 45px 16px; }
+            .usecase-card { padding: 22px 18px; }
+            .usecase-card h3 { font-size: 17px; }
+            .usecase-card p { font-size: 13px; }
+
+            .related-section { padding: 45px 16px; }
+            .related-card { padding: 18px 18px; }
+            .related-card span.title { font-size: 14px; }
+
+            .cta-section { padding: 45px 16px; }
+            .cta-content h2 { font-size: 26px; }
+            .cta-content p { font-size: 14px; }
+
+            .footer { padding: 45px 18px 0; }
+            .footer-brand p { font-size: 14px; }
+            .footer-column ul li a { font-size: 14px; }
+            .footer-bottom p { font-size: 12px; line-height: 1.7; }
+            .footer-bottom-links a { font-size: 12px; }
+        }
+        @media (max-width: 360px) {
+            .page-hero h1 { font-size: 24px; }
+            .overview-text h2 { font-size: 22px; }
+            .section-heading h2 { font-size: 22px; }
+            .cta-content h2 { font-size: 22px; }
+            .footer-bottom-links { gap: 10px; }
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+    <a href="index.html" class="logo">
+        <img src="logo.png" alt="AssureInfo Technologies Logo">
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">HOME</a></li>
+
+        <li class="dropdown">
+            <a href="services.html" class="dropdown-toggle">
+                SERVICES <span class="arrow">&#9662;</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="master-data.html">Master Data</a></li>
+                <li><a href="implementation.html">Implementation</a></li>
+                <li><a href="digital-transformation.html">Digital Transformation</a></li>
+                <li><a href="interfaces.html">Interfaces</a></li>
+                <li><a href="csv.html">Computer System Validation (CSV)</a></li>
+                <li><a href="operational-support.html">Operational Support</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="technologies.html" class="dropdown-toggle">
+                TECHNOLOGIES <span class="arrow">&#9662;</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="lims.html">LIMS</a></li>
+                <li><a href="eln.html">ELN</a></li>
+                <li><a href="empower.html">Empower</a></li>
+                <li><a href="nugenesis.html">NuGenesis (SDMS)</a></li>
+                <li><a href="chromeleon.html">Chromeleon</a></li>
+                <li><a href="moda.html">MODA</a></li>
+                <li><a href="minitab.html">Minitab</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="industries.html" class="dropdown-toggle active">
+                INDUSTRIES <span class="arrow">&#9662;</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="pharmaceutical.html">Pharmaceutical</a></li>
+                <li><a href="biotechnology.html">Biotechnology</a></li>
+                <li><a href="healthcare.html" class="active-page">Healthcare</a></li>
+                <li><a href="food-nutrition.html">Food and Nutrition</a></li>
+                <li><a href="oil-gas.html">Oil and Gas</a></li>
+                <li><a href="agriculture.html">Agriculture</a></li>
+            </ul>
+        </li>
+
+        <li><a href="company.html">COMPANY</a></li>
+
+        <li>
+            <a href="contact.html" class="contact-btn">CONTACT US</a>
+        </li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" type="button"
+        aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sep">/</span>
+                <a href="industries.html">Industries</a>
+                <span class="sep">/</span>
+                <span class="current">Healthcare</span>
+            </div>
+            <span class="page-hero-label">SECTOR 03</span>
+            <h1>Healthcare</h1>
+            <div class="hero-subtitle">Digital solutions supporting laboratory processes, information management, and data integrity in healthcare environments.</div><p class="hero-desc">Healthcare laboratories balance clinical urgency with regulatory rigour, supporting patient diagnosis, monitoring, and treatment while meeting accreditation and regulatory standards. We deliver laboratory informatics, validation, and digital transformation solutions that help healthcare laboratories improve turnaround times, ensure data integrity, and support better patient outcomes.</p>
+            <div class="page-hero-actions">
+                <a href="contact.html" class="hero-btn">GET IN TOUCH</a>
+                <a href="#offerings" class="hero-btn secondary">EXPLORE OFFERINGS</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="overview-section">
+        <div class="overview-container">
+            <div class="overview-text">
+                <span class="section-label">OVERVIEW</span>
+                <h2>Informatics That Supports Better Patient Care</h2>
+                <p>Healthcare laboratories operate in a uniquely demanding environment. They must deliver accurate results quickly to support clinical decision-making, often around the clock, while meeting stringent accreditation standards including CAP, CLIA, ISO 15189, and equivalent national requirements. The data they generate directly informs patient diagnosis, treatment, and monitoring, making data integrity not just a regulatory obligation but a fundamental patient safety imperative.</p>
+            <p>At AssureInfo Technologies, we partner with clinical and hospital laboratories to implement, validate, and support laboratory informatics platforms that improve operational efficiency, ensure data integrity, and support better patient outcomes. Our consultants understand the unique workflows of healthcare laboratories, from urgent specimen handling to reference laboratory interfaces, and the regulatory frameworks that govern them.</p>
+            <p>Whether you are implementing a new laboratory information system, validating interfaces with electronic health records, modernizing your laboratory workflows, or strengthening data governance across your laboratory network, we bring the healthcare-specific expertise needed to deliver solutions that balance clinical urgency with regulatory rigour and operational efficiency.</p>
+            </div>
+            <div class="overview-stats">
+                <div class="stat-card">
+                    <div class="stat-number">CAP / CLIA</div>
+                    <div class="stat-label">Aligned</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">ISO 15189</div>
+                    <div class="stat-label">Compliant</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">EHR Integration</div>
+                    <div class="stat-label">Ready</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Clinical Operations</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFFERINGS -->
+    <section class="offerings-section" id="offerings">
+        <div class="offerings-container">
+            <div class="section-heading">
+                <span class="section-label">SECTOR 03</span>
+                <h2>What We Offer</h2>
+                <p>Healthcare-focused laboratory informatics, validation, and digital transformation services.</p>
+            </div>
+            <div class="offerings-grid">
+                <div class="offering-card">
+                    <div class="offering-number">01</div>
+                    <h3>Laboratory Information System Implementation</h3>
+                    <p>Implementation and validation of laboratory information systems supporting clinical chemistry, haematology, microbiology, and molecular testing workflows.</p>
+                    <div class="offering-line"></div>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-number">02</div>
+                    <h3>EHR Interface & Integration</h3>
+                    <p>Design, validation, and support of interfaces between laboratory systems and electronic health record platforms for seamless clinical data flow.</p>
+                    <div class="offering-line"></div>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-number">03</div>
+                    <h3>Laboratory Workflow Optimization</h3>
+                    <p>Analysis and redesign of laboratory workflows to improve turnaround times, reduce errors, and support high-volume clinical operations.</p>
+                    <div class="offering-line"></div>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-number">04</div>
+                    <h3>Computer System Validation</h3>
+                    <p>Full lifecycle CSV services for healthcare laboratory systems in line with CAP, CLIA, ISO 15189, and HIPAA requirements.</p>
+                    <div class="offering-line"></div>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-number">05</div>
+                    <h3>Data Integrity & Governance</h3>
+                    <p>Programmes to assess, remediate, and strengthen data integrity across laboratory systems in support of patient safety and accreditation.</p>
+                    <div class="offering-line"></div>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-number">06</div>
+                    <h3>Digital Transformation</h3>
+                    <p>Paperless laboratory initiatives, automation of routine processes, and analytics dashboards that support clinical laboratory operations.</p>
+                    <div class="offering-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="benefits-section">
+        <div class="benefits-container">
+            <div class="section-heading">
+                <span class="section-label">VALUE</span>
+                <h2>Key Benefits</h2>
+                <p>Healthcare-focused solutions deliver clinical, operational, and regulatory value.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg></div>
+                    <h3>Faster Turnaround</h3>
+                    <p>Streamlined workflows, automation, and integrated systems reduce turnaround times and support faster clinical decision-making.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                    <h3>Patient Safety</h3>
+                    <p>ALCOA+ aligned data integrity ensures every result is attributable, traceable, and reliable for clinical decision support.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L19 6V11C19 16 15.5 19.5 12 21C8.5 19.5 5 16 5 11V6L12 3Z"></path><path d="M9 12L11 14L15 10"></path></svg></div>
+                    <h3>Accreditation Readiness</h3>
+                    <p>Validated, audit-trailed systems support CAP, CLIA, ISO 15189, and equivalent accreditation and regulatory requirements.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+                    <h3>Operational Efficiency</h3>
+                    <p>Optimized workflows, integrated systems, and analytics dashboards improve laboratory productivity and resource utilization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPROACH OR USE CASES -->
+    <section class="usecases-section">
+        <div class="usecases-container">
+            <div class="section-heading">
+                <span class="section-label">WHERE IT'S USED</span>
+                <h2>Where We Help</h2>
+                <p>Healthcare laboratory scenarios where our solutions deliver measurable value.</p>
+            </div>
+            <div class="usecases-grid">
+                <div class="usecase-card">
+                    <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                    <h3>Clinical Chemistry</h3>
+                    <p>High-volume chemistry and immunoassay testing workflows with EHR integration and rapid turnaround for clinical decision support.</p>
+                </div>
+                <div class="usecase-card">
+                    <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15c6.667-6 13.333 0 20-6"></path><path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"></path><path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"></path><path d="M17 6c-3.667 3-7.333 3-11 0"></path><path d="M19 12c-3.667 3-7.333 3-11 0"></path></svg></div>
+                    <h3>Molecular Diagnostics</h3>
+                    <p>Molecular and genomic testing workflows with structured data capture, EHR reporting, and quality management integration.</p>
+                </div>
+                <div class="usecase-card">
+                    <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L19 6V11C19 16 15.5 19.5 12 21C8.5 19.5 5 16 5 11V6L12 3Z"></path><path d="M9 12L11 14L15 10"></path></svg></div>
+                    <h3>Microbiology</h3>
+                    <p>Culture, identification, and susceptibility testing workflows with structured reporting and infection control integration.</p>
+                </div>
+                <div class="usecase-card">
+                    <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                    <h3>Stat & Urgent Testing</h3>
+                    <p>Rapid response workflows for urgent and stat testing with priority handling, immediate notification, and EHR alerting.</p>
+                </div>
+                <div class="usecase-card">
+                    <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12S5.5 5 12 5S22 12 22 12S18.5 19 12 19S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg></div>
+                    <h3>Reference Laboratory Interfaces</h3>
+                    <p>Bidirectional interfaces with reference laboratories for send-out testing, result retrieval, and clinical reporting.</p>
+                </div>
+                <div class="usecase-card">
+                    <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                    <h3>Multi-Site Networks</h3>
+                    <p>Standardized informatics platforms across hospital networks and laboratory networks with centralized governance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RELATED PAGES -->
+    <section class="related-section">
+        <div class="related-container">
+            <div class="section-heading">
+                <span class="section-label">EXPLORE MORE</span>
+                <h2>Other Industries</h2>
+                <p>Discover the full range of industries we serve with tailored laboratory informatics, validation, and digital transformation solutions.</p>
+            </div>
+            <div class="related-grid">
+                <a href="pharmaceutical.html" class="related-card">
+                    <span class="title">Pharmaceutical</span>
+                    <span class="arrow">&#8594;</span>
+                </a>
+                <a href="biotechnology.html" class="related-card">
+                    <span class="title">Biotechnology</span>
+                    <span class="arrow">&#8594;</span>
+                </a>
+                <a href="food-nutrition.html" class="related-card">
+                    <span class="title">Food and Nutrition</span>
+                    <span class="arrow">&#8594;</span>
+                </a>
+                <a href="oil-gas.html" class="related-card">
+                    <span class="title">Oil and Gas</span>
+                    <span class="arrow">&#8594;</span>
+                </a>
+                <a href="agriculture.html" class="related-card">
+                    <span class="title">Agriculture</span>
+                    <span class="arrow">&#8594;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-content">
+                <span class="cta-label">LET'S CONNECT</span>
+                <h2>Ready to Get Started with<br><span>Healthcare?</span></h2>
+                <p>Talk to our consultants today to discuss your requirements, scope a tailored engagement, and discover how AssureInfo Technologies can help you achieve your operational and compliance goals.</p>
+            </div>
+            <div class="cta-action">
+                <a href="contact.html" class="cta-btn">CONTACT US <span>&#8599;</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="logo.png" alt="AssureInfo Technologies Logo" class="footer-logo" loading="lazy">
+                <p>AssureInfo Technologies Pvt. Ltd. is a trusted technology consulting and services company focused on laboratory informatics, digital transformation, and enterprise support solutions.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="technologies.html">Technologies</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="master-data.html">Master Data</a></li>
+                    <li><a href="implementation.html">Implementation</a></li>
+                    <li><a href="digital-transformation.html">Digital Transformation</a></li>
+                    <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="csv.html">Computer System Validation (CSV)</a></li>
+                    <li><a href="operational-support.html">Operational Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Technologies</h3>
+                <ul>
+                    <li><a href="lims.html">LIMS</a></li>
+                    <li><a href="eln.html">ELN</a></li>
+                    <li><a href="empower.html">Empower</a></li>
+                    <li><a href="nugenesis.html">NuGenesis (SDMS)</a></li>
+                    <li><a href="chromeleon.html">Chromeleon</a></li>
+                    <li><a href="moda.html">MODA</a></li>
+                    <li><a href="minitab.html">Minitab</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Industries</h3>
+                <ul>
+                    <li><a href="pharmaceutical.html">Pharmaceutical</a></li>
+                    <li><a href="biotechnology.html">Biotechnology</a></li>
+                    <li><a href="healthcare.html">Healthcare</a></li>
+                    <li><a href="food-nutrition.html">Food and Nutrition</a></li>
+                    <li><a href="oil-gas.html">Oil and Gas</a></li>
+                    <li><a href="agriculture.html">Agriculture</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-contact">
+                <h3>Contact Us</h3>
+                <p><strong>Email</strong><br>info@assureinfo.com</p>
+                <p><strong>Phone</strong><br>+91 XXXXX XXXXX</p>
+                <p><strong>Location</strong><br>Tamil Nadu, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AssureInfo Technologies Pvt. Ltd. All Rights Reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms &amp; Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+<script>
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+
+    hamburger.addEventListener("click", function (e) {
+        e.stopPropagation();
+        navLinks.classList.toggle("active");
+        hamburger.classList.toggle("active");
+        hamburger.setAttribute("aria-expanded", navLinks.classList.contains("active"));
+    });
+
+    document.querySelectorAll(".nav-links .dropdown-toggle").forEach(toggle => {
+        toggle.addEventListener("click", function (e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const dropdown = this.closest(".dropdown");
+                const isOpen = dropdown.classList.contains("open");
+                document.querySelectorAll(".nav-links .dropdown").forEach(item => {
+                    item.classList.remove("open");
+                });
+                if (!isOpen) { dropdown.classList.add("open"); }
+            }
+        });
+    });
+
+    document.querySelectorAll(".nav-links a:not(.dropdown-toggle)").forEach(link => {
+        link.addEventListener("click", function () {
+            if (window.innerWidth <= 768) {
+                navLinks.classList.remove("active");
+                hamburger.classList.remove("active");
+                hamburger.setAttribute("aria-expanded", "false");
+                document.querySelectorAll(".nav-links .dropdown").forEach(item => {
+                    item.classList.remove("open");
+                });
+            }
+        });
+    });
+
+    document.addEventListener("click", function (event) {
+        if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+            hamburger.setAttribute("aria-expanded", "false");
+            document.querySelectorAll(".nav-links .dropdown").forEach(item => {
+                item.classList.remove("open");
+            });
+        }
+    });
+
+    let resizeTimer;
+    window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove("active");
+                hamburger.classList.remove("active");
+                hamburger.setAttribute("aria-expanded", "false");
+                document.querySelectorAll(".nav-links .dropdown").forEach(item => {
+                    item.classList.remove("open");
+                });
+            }
+        }, 150);
+    });
+
+</script>
+</body>
+</html>
